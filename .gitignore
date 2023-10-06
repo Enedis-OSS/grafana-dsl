@@ -1,17 +1,16 @@
-*.class
-*.orig
 target/
-/classes/
-bin/
-test-output/
-.gradle/
-build/
-temp/
-tmp/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
 .idea/
 *.iws
 *.iml
 *.ipr
-*.ids
-out/
-*.log
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
