@@ -3,6 +3,7 @@ package fr.enedis.grafana.dsl.dashboard
 import org.json.JSONObject
 import fr.enedis.grafana.dsl.annotations.Annotations
 import fr.enedis.grafana.dsl.dashboard.link.DashboardLinks
+import fr.enedis.grafana.dsl.folder.Folder
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.jsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
@@ -27,18 +28,20 @@ import fr.enedis.grafana.dsl.variables.Variables
  * @since 7/21/18
  */
 class Dashboard(
-    private val uid: String? = null,
-    private val title: String,
-    private val timeRange: TimeRange,
-    private val refresh: Refresh,
-    private val nowDelay: Duration? = null,
-    private val tags: Tags,
-    private val variables: Variables,
-    private val panels: Panels,
-    private val editable: Boolean,
-    private val annotations: Annotations = Annotations(emptyList()),
-    private val links: DashboardLinks = DashboardLinks(emptyList()),
-    private val graphTooltip: GraphTooltip = GraphTooltip.DEFAULT,
+     val uid: String? = null,
+     val title: String,
+     val timeRange: TimeRange,
+     val refresh: Refresh,
+     val nowDelay: Duration? = null,
+     val tags: Tags,
+     val variables: Variables,
+     val panels: Panels,
+     val editable: Boolean,
+     val annotations: Annotations = Annotations(emptyList()),
+     val links: DashboardLinks = DashboardLinks(emptyList()),
+     val graphTooltip: GraphTooltip = GraphTooltip.DEFAULT,
+     val folder: Folder? = null,
+     val environment: String? = null,
 ) : Json<JSONObject> {
 
     init {
@@ -71,5 +74,9 @@ class Dashboard(
             "time_options" to jsonArray[5.m, 15.m, 1.h, 6.h, 12.h, 24.h, 2.d, 7.d, 30.d]
         }
         "timezone" to "browser"
+    }
+
+    override fun toString(): String {
+        return toJson().toString(4)
     }
 }

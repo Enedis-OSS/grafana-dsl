@@ -23,7 +23,7 @@ class ValueMappingsBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("ValueMappingsBuilderValueToText.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("ValueMappingsBuilderValueToText.json")
     }
 
     @Test
@@ -42,6 +42,6 @@ class ValueMappingsBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("ValueMappingsBuilderRangeToText.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("ValueMappingsBuilderRangeToText.json")
     }
 }

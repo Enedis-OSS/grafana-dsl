@@ -54,7 +54,7 @@ class SingleStatPanelBuilderTest {
         }
 
         // that
-        minimalDashboard shouldEqualToJson jsonFile("SinglestatBuilderWithRepeat.json")
+        minimalDashboard.toString() shouldEqualToJson jsonFile("SinglestatBuilderWithRepeat.json")
     }
 
     @Test
@@ -97,6 +97,6 @@ class SingleStatPanelBuilderTest {
         }
 
         // that
-        minimalDashboard shouldEqualToJson jsonFile("SinglestatBuilderWithoutRepeat.json")
+        minimalDashboard.toString() shouldEqualToJson jsonFile("SinglestatBuilderWithoutRepeat.json")
     }
 }

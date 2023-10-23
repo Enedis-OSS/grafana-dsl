@@ -34,7 +34,7 @@ class StatPanelFieldConfigBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("MappingsBuilderValueToText.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("MappingsBuilderValueToText.json")
     }
 
     @Test
@@ -58,6 +58,6 @@ class StatPanelFieldConfigBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("MappingsBuilderRangeToText.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("MappingsBuilderRangeToText.json")
     }
 }

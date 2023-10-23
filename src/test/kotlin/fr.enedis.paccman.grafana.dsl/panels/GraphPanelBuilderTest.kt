@@ -604,7 +604,7 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
                 }
             }
         }
-        expectedDashboard shouldEqualToJson jsonFile("RepeatingGraphPanel.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("RepeatingGraphPanel.json")
     }
 
     @Test
@@ -623,7 +623,7 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
                 }
             }
         }
-        expectedDashboard shouldEqualToJson jsonFile("RepeatingGraphPanelWithMaxPerRow.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("RepeatingGraphPanelWithMaxPerRow.json")
     }
 
     @Test

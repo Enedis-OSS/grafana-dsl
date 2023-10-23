@@ -25,7 +25,7 @@ class RepeatBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("RepeatBuilderHorizontal.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("RepeatBuilderHorizontal.json")
     }
 
     @Test
@@ -44,6 +44,6 @@ class RepeatBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("RepeatBuilderVertical.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("RepeatBuilderVertical.json")
     }
 }

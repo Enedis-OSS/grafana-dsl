@@ -5,6 +5,7 @@ import fr.enedis.grafana.dsl.annotations.Annotations
 import fr.enedis.grafana.dsl.annotations.AnnotationsBuilder
 import fr.enedis.grafana.dsl.dashboard.link.DashboardLinks
 import fr.enedis.grafana.dsl.dashboard.link.DashboardLinksBuilder
+import fr.enedis.grafana.dsl.folder.Folder
 import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
 import fr.enedis.grafana.dsl.generators.SimplePanelLayoutGenerator
 import fr.enedis.grafana.dsl.panels.Panel
@@ -42,6 +43,10 @@ class DashboardBuilder(private val title: String) {
     var editable: Boolean = true
 
     var graphTooltip: GraphTooltip = GraphTooltip.DEFAULT
+
+    var folder: Folder? = null
+
+    var environment: String? = null
 
     private val annotations = AnnotationsBuilder()
 
@@ -83,7 +88,9 @@ class DashboardBuilder(private val title: String) {
         annotations = Annotations(annotations.annotations),
         links = DashboardLinks(links.links),
         editable = editable,
-        graphTooltip = graphTooltip
+        graphTooltip = graphTooltip,
+        folder = folder,
+        environment = environment
     )
 
 }

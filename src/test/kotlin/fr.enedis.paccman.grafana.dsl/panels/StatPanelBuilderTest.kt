@@ -79,7 +79,7 @@ class StatPanelBuilderTest {
         }
 
         // then
-        minimalDashboard shouldEqualToJson jsonFile("StatPanelWithRepeat.json")
+        minimalDashboard.toString() shouldEqualToJson jsonFile("StatPanelWithRepeat.json")
     }
 
     @Test
@@ -131,7 +131,7 @@ class StatPanelBuilderTest {
         }
 
         // then
-        minimalDashboard shouldEqualToJson jsonFile("StatPanelWithoutRepeat.json")
+        minimalDashboard.toString() shouldEqualToJson jsonFile("StatPanelWithoutRepeat.json")
     }
 
     @Test

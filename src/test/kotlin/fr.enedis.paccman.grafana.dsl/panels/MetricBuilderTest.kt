@@ -26,7 +26,7 @@ class MetricBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("MetricsBuilderTextQuery.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("MetricsBuilderTextQuery.json")
     }
 
     @Test
@@ -47,6 +47,6 @@ class MetricBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("MetricsBuilderMetricsQuery.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("MetricsBuilderMetricsQuery.json")
     }
 }

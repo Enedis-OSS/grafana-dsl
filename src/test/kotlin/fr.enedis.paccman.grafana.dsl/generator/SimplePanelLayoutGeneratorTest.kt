@@ -28,6 +28,6 @@ class SimplePanelLayoutGeneratorTest {
             }
         }
 
-        dashboard shouldEqualToJson jsonFile("SimpleGenerator.json")
+        dashboard.toString() shouldEqualToJson jsonFile("SimpleGenerator.json")
     }
 }

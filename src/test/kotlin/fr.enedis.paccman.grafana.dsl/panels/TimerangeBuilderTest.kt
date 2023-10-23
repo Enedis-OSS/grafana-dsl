@@ -24,6 +24,6 @@ class TimerangeBuilderTest {
             }
         }
 
-        expectedDashboard shouldEqualToJson jsonFile("TimeRangeBuilder.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("TimeRangeBuilder.json")
     }
 }

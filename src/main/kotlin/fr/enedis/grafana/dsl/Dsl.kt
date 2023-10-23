@@ -1,6 +1,9 @@
 package fr.enedis.grafana.dsl
 
+import fr.enedis.grafana.dsl.dashboard.Dashboard
 import fr.enedis.grafana.dsl.dashboard.DashboardBuilder
+
+annotation class KDashboard
 
 /**
  * Returns JSON-string for dashboard import.
@@ -9,9 +12,8 @@ import fr.enedis.grafana.dsl.dashboard.DashboardBuilder
  * @param build Dashboard builder closure
  * @return JSON-string
  */
-fun dashboard(title: String, build: DashboardBuilder.() -> Unit): String {
+fun dashboard(title: String, build: DashboardBuilder.() -> Unit): Dashboard {
     val builder = DashboardBuilder(title)
     builder.build()
-    val dashboard = builder.createDashboard()
-    return dashboard.toJson().toString()
+    return builder.createDashboard()
 }

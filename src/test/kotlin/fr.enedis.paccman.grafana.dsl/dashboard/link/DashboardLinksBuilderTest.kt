@@ -44,6 +44,6 @@ class DashboardLinksBuilderTest {
             }
         }
 
-        dashboard shouldEqualToJson jsonFile("DashboardLinks.json")
+        dashboard.toString() shouldEqualToJson jsonFile("DashboardLinks.json")
     }
 }
