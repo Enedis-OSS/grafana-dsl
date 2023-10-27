@@ -1,15 +1,14 @@
 package fr.enedis.grafana.dsl.dashboard
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.annotations.Annotations
 import fr.enedis.grafana.dsl.dashboard.link.DashboardLinks
-import fr.enedis.grafana.dsl.folder.Folder
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.jsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.Panels
 import fr.enedis.grafana.dsl.time.*
 import fr.enedis.grafana.dsl.variables.Variables
+import org.json.JSONObject
 
 /**
  *
@@ -40,8 +39,6 @@ class Dashboard(
      val annotations: Annotations = Annotations(emptyList()),
      val links: DashboardLinks = DashboardLinks(emptyList()),
      val graphTooltip: GraphTooltip = GraphTooltip.DEFAULT,
-     val folder: Folder? = null,
-     val environment: String? = null,
 ) : Json<JSONObject> {
 
     init {
