@@ -1,7 +1,7 @@
 #!groovy
 
 javaBuild{
-	module="enedis-grafana-dsl"
+	module="grafana-dsl"
 	devMails="dsi-nexus-weco-chutney@g.enedis.fr"
 	userEmail="jenkins-commun-hors-linky@enedis.fr"
 	userName="Jenkins Commun hors Linky"
