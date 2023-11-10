@@ -1,6 +1,5 @@
 package fr.enedis.grafana.dsl.panels.pieChart
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.datasource.Datasource
 import fr.enedis.grafana.dsl.datasource.Zabbix
 import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
@@ -10,7 +9,10 @@ import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
 import fr.enedis.grafana.dsl.variables.Variable
+import org.json.JSONObject
 
 class PieChartPanelBuilder(
     private val title: String,
@@ -32,6 +34,8 @@ class PieChartPanelBuilder(
 
     var fieldConfig: PieChartPanelFieldConfig = PieChartPanelFieldConfig()
 
+    var transformations: List<PanelTransformation> = mutableListOf()
+
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
         this.propertiesSetter = propertiesSetter
     }
@@ -46,6 +50,12 @@ class PieChartPanelBuilder(
         val builder = PieChartPanelFieldConfigBuilder()
         builder.build()
         fieldConfig = builder.createPieChartPanelFieldConfig()
+    }
+
+    fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
+        val builder = PanelTransformationsBuilder()
+        builder.build()
+        transformations =  builder.createPanelTransformations()
     }
 
     fun repeat(variable: Variable, build: RepeatBuilder.() -> Unit) {
@@ -90,7 +100,8 @@ class PieChartPanelBuilder(
                 repeat = repeat,
                 timerange = timerange,
                 options = options,
-                fieldConfig = fieldConfig
+                fieldConfig = fieldConfig,
+                transformations = transformations,
             ),
             propertiesSetter
         )

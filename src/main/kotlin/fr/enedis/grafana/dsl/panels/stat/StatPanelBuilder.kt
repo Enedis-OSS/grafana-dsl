@@ -10,6 +10,8 @@ import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
 import fr.enedis.grafana.dsl.variables.Variable
 import org.json.JSONObject
 
@@ -42,7 +44,7 @@ class StatPanelBuilder(
 
     var fieldConfig: StatPanelFieldConfig = StatPanelFieldConfig()
 
-    var transformations: List<StatPanelTransformation> = mutableListOf()
+    var transformations: List<PanelTransformation> = mutableListOf()
 
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
         this.propertiesSetter = propertiesSetter
@@ -54,10 +56,10 @@ class StatPanelBuilder(
         options = builder.createStatPanelDisplayOptions()
     }
 
-    fun transformations(build: StatPanelTransformationsBuilder.() -> Unit) {
-        val builder = StatPanelTransformationsBuilder()
+    fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
+        val builder = PanelTransformationsBuilder()
         builder.build()
-        transformations = builder.createStatPanelTransformations()
+        transformations = builder.createPanelTransformations()
     }
 
     fun fieldConfig(build: StatPanelFieldConfigBuilder.() -> Unit) {

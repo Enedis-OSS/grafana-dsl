@@ -4,8 +4,8 @@ import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.Panel
 import fr.enedis.grafana.dsl.panels.Timerange
-import fr.enedis.grafana.dsl.panels.gauge.GaugePanelTransformation
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
 
 /**
  * Stat panel presents text from defined metric
@@ -19,7 +19,7 @@ class StatPanel(
     private val repeat: Repeat? = null,
     private val fieldConfig: StatPanelFieldConfig = StatPanelFieldConfig(),
     private val options: StatPanelDisplayOptions = StatPanelDisplayOptions(),
-    private val transformations: List<StatPanelTransformation> = emptyList(),
+    private val transformations: List<PanelTransformation> = emptyList(),
     ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {

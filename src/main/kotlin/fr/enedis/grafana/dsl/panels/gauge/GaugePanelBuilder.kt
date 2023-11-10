@@ -1,6 +1,5 @@
 package fr.enedis.grafana.dsl.panels.gauge
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.datasource.Datasource
 import fr.enedis.grafana.dsl.datasource.Zabbix
 import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
@@ -10,7 +9,10 @@ import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
 import fr.enedis.grafana.dsl.variables.Variable
+import org.json.JSONObject
 
 /**
  * Builder for Stat tab
@@ -37,7 +39,7 @@ class GaugePanelBuilder(
 
     var fieldConfig: GaugePanelFieldConfig = GaugePanelFieldConfig()
 
-    var transformations: List<GaugePanelTransformation> = mutableListOf()
+    var transformations: List<PanelTransformation> = mutableListOf()
 
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
         this.propertiesSetter = propertiesSetter
@@ -55,10 +57,10 @@ class GaugePanelBuilder(
         fieldConfig = builder.createGaugePanelFieldConfig()
     }
 
-    fun transformations(build: GaugePanelTransformationsBuilder.() -> Unit) {
-        val builder = GaugePanelTransformationsBuilder()
+    fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
+        val builder = PanelTransformationsBuilder()
         builder.build()
-        transformations = builder.createGaugePanelTransformations()
+        transformations = builder.createPanelTransformations()
     }
 
     fun repeat(variable: Variable, build: RepeatBuilder.() -> Unit) {

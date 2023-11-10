@@ -1,9 +1,8 @@
 package fr.enedis.grafana.dsl.metrics
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.DashboardElement
-import fr.enedis.grafana.dsl.datasource.Datasource
 import fr.enedis.grafana.dsl.json.jsonObject
+import org.json.JSONObject
 
 class Expression constructor(
     override val id: String,

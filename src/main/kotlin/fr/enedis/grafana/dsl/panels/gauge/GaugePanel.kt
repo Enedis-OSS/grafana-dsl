@@ -5,6 +5,7 @@ import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.Panel
 import fr.enedis.grafana.dsl.panels.Timerange
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
 
 /**
  * Gauge panel presents text from defined metric
@@ -18,7 +19,7 @@ class GaugePanel(
     private val repeat: Repeat? = null,
     private val fieldConfig: GaugePanelFieldConfig = GaugePanelFieldConfig(),
     private val options: GaugePanelDisplayOptions = GaugePanelDisplayOptions(),
-    private val transformations: List<GaugePanelTransformation> = emptyList(),
+    private val transformations: List<PanelTransformation> = emptyList(),
   ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {
