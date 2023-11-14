@@ -16,6 +16,7 @@ class StatPanelDisplayOptions(
     private val textMode: TextMode = TextMode.AUTO,
     private val graphMode: GraphMode = GraphMode.NONE,
     private val justifyMode: JustifyMode = JustifyMode.AUTO,
+    private val text: StatPanelText? = null,
     private val reduceOptions: StatPanelReduceOptions = StatPanelReduceOptions(),
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
@@ -25,6 +26,7 @@ class StatPanelDisplayOptions(
         "colorMode" to colorMode.value
         "graphMode" to graphMode.value
         "justifyMode" to justifyMode.value
+        "text" to text
     }
 }
 
@@ -39,11 +41,18 @@ class StatPanelDisplayOptionsBuilder {
     var textMode: TextMode = TextMode.AUTO
     var graphMode: GraphMode = GraphMode.NONE
     var justifyMode: JustifyMode = JustifyMode.AUTO
+    var text: StatPanelText? = null
     private var reduceOptions: StatPanelReduceOptions = StatPanelReduceOptions()
     fun reduceOptions(build: StatPanelReduceOptionsBuilder.() -> Unit) {
         val builder = StatPanelReduceOptionsBuilder()
         builder.build()
         reduceOptions = builder.createReduceOptions()
+    }
+
+    fun text(build: StatPanelTextBuilder.() -> Unit) {
+        val builder = StatPanelTextBuilder()
+        builder.build()
+        text = builder.createText()
     }
 
     fun createStatPanelDisplayOptions() = StatPanelDisplayOptions(
@@ -52,6 +61,7 @@ class StatPanelDisplayOptionsBuilder {
         textMode = textMode,
         orientation = orientation,
         justifyMode = justifyMode,
+        text = text,
         reduceOptions = reduceOptions
     )
 }
@@ -76,6 +86,21 @@ class StatPanelReduceOptionsBuilder() {
     var calcs: List<String> = listOf("lastNotNull")
     fun createReduceOptions(): StatPanelReduceOptions {
         return StatPanelReduceOptions(fields = fields, calcs = calcs)
+    }
+}
+
+class StatPanelText(
+    private val valueSize: Int = 0,
+) : Json<JSONObject> {
+    override fun toJson(): JSONObject = jsonObject {
+        "valueSize" to valueSize
+    }
+}
+
+class StatPanelTextBuilder() {
+    var valueSize: Int = 0
+    fun createText(): StatPanelText {
+        return StatPanelText(valueSize = valueSize)
     }
 }
 

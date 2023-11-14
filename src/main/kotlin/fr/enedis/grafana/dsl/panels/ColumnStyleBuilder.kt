@@ -10,6 +10,7 @@ import fr.enedis.grafana.dsl.DashboardElement
 @DashboardElement
 class ColumnStyleBuilder {
     val styles = mutableListOf<ColumnStyle>()
+    var type: ColumnStyleType? = null
     var decimals: Int? = null
     var unit: YAxis.Unit = YAxis.Unit.SHORT
     var alias: String? = null
@@ -18,13 +19,13 @@ class ColumnStyleBuilder {
     fun style(pattern: String, build: ColumnStyleBuilder.() -> Unit) {
         val builder = ColumnStyleBuilder()
         builder.build()
-        styles += ColumnStyle(pattern = pattern, decimals = builder.decimals, unit = builder.unit, alias = builder.alias)
+        styles += ColumnStyle(pattern = pattern, decimals = builder.decimals, unit = builder.unit, alias = builder.alias, type = builder.type)
     }
     fun rename(pair: Pair<String, String>) {
-        styles += ColumnStyle(pattern = pair.first, alias = pair.second, unit = YAxis.Unit.SHORT)
+        styles += ColumnStyle(pattern = pair.first, alias = pair.second, unit = unit)
     }
 
     fun hide(pattern: String) {
-        styles += ColumnStyle(pattern = pattern, unit = YAxis.Unit.SHORT, type = ColumnStyleType.HIDDEN)
+        styles += ColumnStyle(pattern = pattern, unit = unit, hidden = true)
     }
 }

@@ -153,10 +153,12 @@ class TablePanelBuilderTest : AbstractPanelTest() {
 
             styles {
                 style("Current") {
+                    type = ColumnStyleType.NUMBER
                     unit = YAxis.Unit.PERCENT_0_100
                     decimals = 2
                 }
                 style("/.*/") {
+                    type = ColumnStyleType.NUMBER
                     decimals = 2
                 }
             }

@@ -19,13 +19,14 @@ class ColumnStyle(
     private val decimals: Int? = null,
     private val pattern: String,
     private val alias: String? = null,
-    private val type: ColumnStyleType = ColumnStyleType.NUMBER
+    private val type: ColumnStyleType? = null,
+    private val hidden: Boolean = false
 ) : Json<JSONObject> {
 
     override fun toJson() = jsonObject {
         "unit" to unit.unit
         "decimals" to decimals
-        "type" to type.type
+        "type" to if(hidden) ColumnStyleType.HIDDEN else type?.type
         "pattern" to pattern
         "alias" to alias
     }

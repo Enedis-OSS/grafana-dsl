@@ -15,6 +15,8 @@ class AlertBuilder(private val name: String) {
     var onExecutionError: AlertingState = Alerting
 
     val notificationUids = mutableListOf<String>()
+    @Deprecated("Use notificationUids instead")
+    val notificationIds = mutableListOf<Long>()
 
     private var conditions = emptyList<AlertingCondition>()
     private val thresholds = mutableListOf<Threshold>()
@@ -40,6 +42,7 @@ class AlertBuilder(private val name: String) {
                     frequency = frequency,
                     onNoData = onNoData,
                     onExecutionError = onExecutionError,
+                    notificationIds = notificationIds,
                     notificationUids = notificationUids,
                     conditions = AlertingConditions(conditions),
                     alertRuleTags = alertRuleTags,

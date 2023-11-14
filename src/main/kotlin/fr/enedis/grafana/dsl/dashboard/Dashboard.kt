@@ -27,18 +27,18 @@ import org.json.JSONObject
  * @since 7/21/18
  */
 class Dashboard(
-     val uid: String? = null,
-     val title: String,
-     val timeRange: TimeRange,
-     val refresh: Refresh,
-     val nowDelay: Duration? = null,
-     val tags: Tags,
-     val variables: Variables,
-     val panels: Panels,
-     val editable: Boolean,
-     val annotations: Annotations = Annotations(emptyList()),
-     val links: DashboardLinks = DashboardLinks(emptyList()),
-     val graphTooltip: GraphTooltip = GraphTooltip.DEFAULT,
+    val uid: String? = null,
+    val title: String,
+    val timeRange: TimeRange,
+    val refresh: Refresh,
+    val nowDelay: Duration? = null,
+    val tags: Tags,
+    val variables: Variables,
+    val panels: Panels,
+    val editable: Boolean,
+    val annotations: Annotations = Annotations(emptyList()),
+    val links: DashboardLinks = DashboardLinks(emptyList()),
+    val graphTooltip: GraphTooltip = GraphTooltip.DEFAULT,
 ) : Json<JSONObject> {
 
     init {
