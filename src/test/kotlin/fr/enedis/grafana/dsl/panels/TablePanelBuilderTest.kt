@@ -158,7 +158,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
                     decimals = 2
                 }
                 style("/.*/") {
-                    type = ColumnStyleType.NUMBER
+                    type = ColumnStyleType.HIDDEN
                     decimals = 2
                 }
             }

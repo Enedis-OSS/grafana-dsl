@@ -47,7 +47,7 @@
     {
       "pattern": "/.*/",
       "unit": "short",
-      "type": "number",
+      "type": "hidden",
       "decimals": 2
     }
   ],

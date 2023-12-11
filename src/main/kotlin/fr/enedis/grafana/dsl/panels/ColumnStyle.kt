@@ -26,7 +26,7 @@ class ColumnStyle(
     override fun toJson() = jsonObject {
         "unit" to unit.unit
         "decimals" to decimals
-        "type" to if(hidden) ColumnStyleType.HIDDEN else type?.type
+        "type" to if(hidden) ColumnStyleType.HIDDEN.type else type?.type
         "pattern" to pattern
         "alias" to alias
     }
