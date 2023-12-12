@@ -73,9 +73,10 @@ class StatPanelDisplayOptionsBuilder {
 class StatPanelReduceOptions(
     private val fields: String = "",
     private val calcs: List<String> = listOf("lastNotNull"),
+    private val values: Boolean = false
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
-        "values" to false
+        "values" to values
         "calcs" to calcs
         "fields" to fields
     }
@@ -84,8 +85,9 @@ class StatPanelReduceOptions(
 class StatPanelReduceOptionsBuilder() {
     var fields: String = ""
     var calcs: List<String> = listOf("lastNotNull")
+    var values: Boolean = false
     fun createReduceOptions(): StatPanelReduceOptions {
-        return StatPanelReduceOptions(fields = fields, calcs = calcs)
+        return StatPanelReduceOptions(fields = fields, calcs = calcs, values = values)
     }
 }
 

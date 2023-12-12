@@ -18,11 +18,13 @@ class PieChartPanelDisplayOptions(
     private val reduceOptions: PieChartPanelReduceOptions = PieChartPanelReduceOptions(),
     private val pieType: PieType = PieType.PIE,
     private val displayLabels: List<String> = emptyList<String>(),
+    private val legend: LegendPieChart = LegendPieChart()
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "reduceOptions" to reduceOptions
         "pieType" to pieType.value
         "displayLabels" to displayLabels
+        "legend" to legend
     }
 }
 
@@ -35,7 +37,7 @@ class PieChartPanelDisplayOptionsBuilder {
     var pieType: PieType = PieType.PIE
     var orientation: Orientation = Orientation.AUTO
     var displayLabels: List<String> = emptyList<String>()
-
+    var legend: LegendPieChart = LegendPieChart()
 
     fun reduceOptions(build: GaugePanelReduceOptionsBuilder.() -> Unit) {
         val builder = GaugePanelReduceOptionsBuilder()
@@ -43,10 +45,17 @@ class PieChartPanelDisplayOptionsBuilder {
         reduceOptions = builder.createReduceOptions()
     }
 
+    fun legend(build: LegendPieChartBuilder.() -> Unit) {
+        val builder = LegendPieChartBuilder()
+        builder.build()
+        legend = builder.createLegend()
+    }
+
     fun createPieChartPanelDisplayOptions() = PieChartPanelDisplayOptions(
         reduceOptions = reduceOptions,
         pieType = pieType,
         displayLabels = displayLabels,
+        legend = legend
     )
 }
 

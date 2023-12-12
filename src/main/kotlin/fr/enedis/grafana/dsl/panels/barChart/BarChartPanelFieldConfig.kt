@@ -1,4 +1,5 @@
-package fr.enedis.grafana.dsl.panels.stat
+package fr.enedis.grafana.dsl.panels.barChart
+
 
 import org.json.JSONObject
 import fr.enedis.grafana.dsl.json.Json
@@ -8,29 +9,33 @@ import fr.enedis.grafana.dsl.panels.NullValue
 import fr.enedis.grafana.dsl.panels.ThresholdMode
 import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
+import fr.enedis.grafana.dsl.panels.gauge.Mapping
+import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
+import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfig
+import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfigBuilder
 
 /**
  * Used to change how the data is displayed in visualizations
- * @author Aleksey Matveev
- * @since 02.10.2020
+ * @since 02.10.2022
  */
-class StatPanelFieldConfig(
-    private val displayName: String? = null,
+class BarChartPanelFieldConfig(
+    private val unit: String = "none",
+    private val min: Number? = null,
+    private val max: Number? = null,
+    private val decimals: Number? = null,
+    private val noValue: String? = null,
     private val thresholds: Thresholds = Thresholds(),
     private val mappings: List<Mapping> = emptyList(),
     private val nullValueMode: NullValue = NullValue.NULL,
-    private val unit: String = "none",
-    private val decimals: String? = null,
-    private val noValue: String? = null,
-    private val overrides: List<OverrideFieldConfig> = emptyList()
-
+    private val overrides: List<OverrideFieldConfig> = emptyList(),
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "defaults" to jsonObject {
             "unit" to unit
+            "min" to min
+            "max" to max
             "decimals" to decimals
             "noValue" to noValue
-            "displayName" to displayName
             "thresholds" to thresholds
             "mappings" to JsonArray(mappings)
             "nullValueMode" to nullValueMode.value
@@ -39,28 +44,26 @@ class StatPanelFieldConfig(
     }
 }
 
-/**
- * Builder for StatPanelFieldConfiguration
- * @author Aleksey Matveev
- * @since 02.10.2020
- */
-class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullValue.NULL) {
-    var displayName: String? = null
+class BarChartPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullValue.NULL) {
+    var unit: String = "none"
+    var min: Number? = null
+    var max: Number? = null
+    var decimals: Number? = null
+    var noValue: String? = null
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
-    var unit: String = "none"
-    var decimals: String? = null
-    var noValue: String? = null
     var overrides: List<OverrideFieldConfig> = emptyList()
-    internal fun createStatPanelFieldConfig(): StatPanelFieldConfig = StatPanelFieldConfig(
-        displayName,
+
+    internal fun createBarChartPanelFieldConfig(): BarChartPanelFieldConfig = BarChartPanelFieldConfig(
+        unit,
+        min,
+        max,
+        decimals,
+        noValue,
         thresholds,
         mappings,
         nullValueMode,
-        unit,
-        decimals,
-        noValue,
-        overrides
+        overrides,
     )
 
     fun thresholds(mode: ThresholdMode = ThresholdMode.ABSOLUTE, build: ThresholdsBuilder.() -> Unit) {
@@ -79,35 +82,5 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         val builder = OverrideFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
-    }
-}
-
-class OverrideFieldConfig(
-    private val matcher: MatcherFieldConfig,
-    private val properties: List<PropertyFieldConfig>
-) : Json<JSONObject> {
-    override fun toJson(): JSONObject  = jsonObject {
-        "matcher" to matcher
-        "properties" to JsonArray(properties)
-    }
-}
-
-class MatcherFieldConfig(
-    private val id : String,
-    private val options: String
-): Json<JSONObject> {
-    override fun toJson(): JSONObject = jsonObject {
-        "id" to id
-        "options" to options
-    }
-}
-
-class PropertyFieldConfig(
-    private val id : String,
-    private val value: Any
-): Json<JSONObject> {
-    override fun toJson(): JSONObject  = jsonObject {
-        "id" to id
-        "value" to value
     }
 }

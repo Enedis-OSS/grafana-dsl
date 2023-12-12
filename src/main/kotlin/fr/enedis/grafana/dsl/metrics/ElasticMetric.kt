@@ -222,8 +222,9 @@ class ElasticQueryMetricBuilder {
     var type: String = "count"
     var field: String = ""
     var hide: Boolean = false
+    var settings: ElasticSettings = ElasticSettings()
 
-    fun createElasticQueryMetric() = ElasticQueryMetric(type = type, field = field, id = id, hide = hide)
+    fun createElasticQueryMetric() = ElasticQueryMetric(type = type, field = field, id = id, hide = hide, settings = settings)
 
 }
 
@@ -301,6 +302,7 @@ class ElasticQueryMetric constructor(
     private val type: String,
     private val field: String,
     private val hide: Boolean = false,
+    private val settings: ElasticSettings = ElasticSettings()
 ) : DashboardMetric {
     override fun toJson(): JSONObject {
         return jsonObject {
@@ -308,7 +310,7 @@ class ElasticQueryMetric constructor(
             "type" to type
             "field" to field
             "meta" to JSONObject()
-            "settings" to JSONObject()
+            "settings" to settings
             "hide" to hide
         }
     }
