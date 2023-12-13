@@ -1,23 +1,17 @@
 package fr.enedis.grafana.dsl.panels.stat
 
-import ElasticDatasource
 import ExprDataSource
 import fr.enedis.grafana.dsl.datasource.Datasource
 import fr.enedis.grafana.dsl.datasource.Zabbix
 import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
 import fr.enedis.grafana.dsl.metrics.DashboardMetric
-import fr.enedis.grafana.dsl.metrics.ElasticSettings
 import fr.enedis.grafana.dsl.metrics.Metrics
 import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.panels.*
-import fr.enedis.grafana.dsl.panels.pieChart.PieChartPanelBuilder
-import fr.enedis.grafana.dsl.panels.pieChart.PieType
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
 import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
 import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
-import fr.enedis.grafana.dsl.variables.BaseVariable
-import fr.enedis.grafana.dsl.variables.HidingMode
 import fr.enedis.grafana.dsl.variables.Variable
 import org.json.JSONObject
 
