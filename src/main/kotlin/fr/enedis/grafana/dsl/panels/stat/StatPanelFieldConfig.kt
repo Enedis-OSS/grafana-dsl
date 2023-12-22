@@ -20,6 +20,7 @@ class StatPanelFieldConfig(
     private val mappings: List<Mapping> = emptyList(),
     private val nullValueMode: NullValue = NullValue.NULL,
     private val unit: String = "none",
+    private val decimals: String? = null,
     private val noValue: String? = null,
     private val overrides: List<OverrideFieldConfig> = emptyList()
 
@@ -27,6 +28,7 @@ class StatPanelFieldConfig(
     override fun toJson(): JSONObject = jsonObject {
         "defaults" to jsonObject {
             "unit" to unit
+            "decimals" to decimals
             "noValue" to noValue
             "displayName" to displayName
             "thresholds" to thresholds
@@ -47,6 +49,7 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
     var unit: String = "none"
+    var decimals: String? = null
     var noValue: String? = null
     var overrides: List<OverrideFieldConfig> = emptyList()
     internal fun createStatPanelFieldConfig(): StatPanelFieldConfig = StatPanelFieldConfig(
@@ -55,6 +58,7 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         mappings,
         nullValueMode,
         unit,
+        decimals,
         noValue,
         overrides
     )
