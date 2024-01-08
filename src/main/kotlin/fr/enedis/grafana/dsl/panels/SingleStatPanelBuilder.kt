@@ -29,7 +29,7 @@ class SingleStatPanelBuilder(
 
     private var repeat: Repeat? = null
 
-    private var timerange = Timerange()
+    private var timerange = TimeRange()
 
     var metrics: List<DashboardMetric> = mutableListOf()
 

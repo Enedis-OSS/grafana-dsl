@@ -2,6 +2,7 @@ package fr.enedis.grafana.dsl.panels.alerting
 
 import fr.enedis.grafana.dsl.DashboardElement
 import fr.enedis.grafana.dsl.panels.GraphPanelBuilder
+import fr.enedis.grafana.dsl.panels.timeSeries.TimeSeriesPanelBuilder
 import fr.enedis.grafana.dsl.time.m
 
 @DashboardElement
@@ -53,6 +54,11 @@ class AlertBuilder(private val name: String) {
 }
 
 fun GraphPanelBuilder.alert(name: String, build: AlertBuilder.() -> Unit) {
+    val builder = AlertBuilder(name)
+    builder.build()
+    properties(builder.createAlertingPanel())
+}
+fun TimeSeriesPanelBuilder.alert(name: String, build: AlertBuilder.() -> Unit) {
     val builder = AlertBuilder(name)
     builder.build()
     properties(builder.createAlertingPanel())

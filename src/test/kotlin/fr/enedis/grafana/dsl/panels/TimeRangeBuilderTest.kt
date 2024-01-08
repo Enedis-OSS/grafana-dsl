@@ -7,7 +7,7 @@ import fr.enedis.grafana.dsl.time.h
 import fr.enedis.grafana.dsl.time.m
 import org.junit.jupiter.api.Test
 
-class TimerangeBuilderTest {
+class TimeRangeBuilderTest {
 
     @Test
     fun `should create time range`() {

@@ -22,7 +22,7 @@ class PieChartPanelBuilder(
 
     private var propertiesSetter: (JSONObject) -> Unit = {}
 
-    private var timerange = Timerange()
+    private var timerange = TimeRange()
 
     private var repeat: Repeat? = null
 

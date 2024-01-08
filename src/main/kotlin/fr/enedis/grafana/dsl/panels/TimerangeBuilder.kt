@@ -13,8 +13,8 @@ class TimerangeBuilder {
     var timeShift: Duration? = null
     var hideTimeOverrideInfo: Boolean = false
 
-    fun createTimerange(): Timerange {
-        return Timerange(
+    fun createTimerange(): TimeRange {
+        return TimeRange(
             lastTime = lastTime,
             timeShift = timeShift,
             hideTimeOverrideInfo = hideTimeOverrideInfo

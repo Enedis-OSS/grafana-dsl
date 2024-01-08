@@ -12,7 +12,7 @@ import fr.enedis.grafana.dsl.panels.repeat.Repeat
 class SingleStatPanel(
     private val basePanel: Panel,
     private val valueMappings: ValueMappings = ValueMappings(ValueToTextType),
-    private val timerange: Timerange = Timerange(),
+    private val timerange: TimeRange = TimeRange(),
     private val repeat: Repeat? = null
 ) : Panel {
 

@@ -1,11 +1,11 @@
 package fr.enedis.grafana.dsl.panels.timeSeries;
 
 import fr.enedis.grafana.dsl.datasource.Datasource
-import fr.enedis.grafana.dsl.datasource.Zabbix
+import fr.enedis.grafana.dsl.datasource.Graphite
 import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
-import fr.enedis.grafana.dsl.metrics.DashboardMetric
 import fr.enedis.grafana.dsl.metrics.Metrics
 import fr.enedis.grafana.dsl.metrics.MetricsBuilder
+import fr.enedis.grafana.dsl.metrics.ReferenceMetricsHolder
 import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
@@ -14,20 +14,21 @@ import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
 import fr.enedis.grafana.dsl.variables.Variable
 import org.json.JSONObject
 
-class TimeSeriesPanelBuilder(private val title: String,
-                      private val panelLayoutGenerator: PanelLayoutGenerator,
+class TimeSeriesPanelBuilder(
+    private val title: String,
+    private val panelLayoutGenerator: PanelLayoutGenerator,
 ) : PanelBuilder {
-    override var bounds: Pair<Int, Int> = PanelBuilder.DEFAULT_BOUNDS
+    private val propertiesSetters = mutableListOf<(JSONObject) -> Unit>()
 
-    private var propertiesSetter: (JSONObject) -> Unit = {}
+    override var bounds = PanelBuilder.DEFAULT_BOUNDS
 
-    private var timerange = Timerange()
+    var datasource: Datasource = Graphite
+
+    private var timerange = TimeRange()
 
     private var repeat: Repeat? = null
 
-    var metrics: List<DashboardMetric> = mutableListOf()
-
-    var datasource: Datasource = Zabbix
+    var metrics = ReferenceMetricsHolder()
 
     var options: TimeSeriesPanelDisplayOptions = TimeSeriesPanelDisplayOptions()
 
@@ -35,8 +36,10 @@ class TimeSeriesPanelBuilder(private val title: String,
 
     var transformations: List<PanelTransformation> = mutableListOf()
 
+    var description: String? = null
+
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
-        this.propertiesSetter = propertiesSetter
+        this.propertiesSetters += propertiesSetter
     }
 
     fun options(build: TimeSeriesPanelDisplayOptionsBuilder.() -> Unit) {
@@ -54,7 +57,7 @@ class TimeSeriesPanelBuilder(private val title: String,
     fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
         val builder = PanelTransformationsBuilder()
         builder.build()
-        transformations =  builder.createPanelTransformations()
+        transformations = builder.createPanelTransformations()
     }
 
     fun repeat(variable: Variable, build: RepeatBuilder.() -> Unit) {
@@ -63,48 +66,41 @@ class TimeSeriesPanelBuilder(private val title: String,
         repeat = builder.createRepeat()
     }
 
-    @Deprecated(message = "pass datasource as the first function argument explicitly")
-    inline fun <reified T : Datasource> metrics(build: MetricsBuilder<T>.() -> Unit) {
-        datasource = T::class.objectInstance ?: Zabbix
-        val builder = MetricsBuilder<T>()
-        builder.build()
-        metrics = builder.metrics
-    }
-
     fun <T : Datasource> metrics(datasource: T, build: MetricsBuilder<T>.() -> Unit) {
         val builder = MetricsBuilder<T>()
         builder.build()
-        metrics = builder.metrics
+        metrics += builder.metrics
         this.datasource = datasource
     }
 
-    fun timerange(build: TimerangeBuilder.() -> Unit) {
+    fun timeRange(build: TimerangeBuilder.() -> Unit) {
         val builder = TimerangeBuilder()
         builder.build()
         timerange = builder.createTimerange()
     }
 
-    internal fun createPanel(): Panel {
-        return AdditionalPropertiesPanel(
-            TimeSeriesPanel(
-                MetricPanel(
-                    BasePanel(
-                        id = panelLayoutGenerator.nextId(),
-                        title = title,
-                        position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second)
-                    ),
-                    datasource = datasource,
-                    metrics = Metrics(metrics)
+    internal fun createPanel() = AdditionalPropertiesPanel(
+        TimeSeriesPanel(
+            MetricPanel(
+                BasePanel(
+                    id = panelLayoutGenerator.nextId(),
+                    title = title,
+                    position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
+                    description = description
                 ),
-                repeat = repeat,
-                timerange = timerange,
-                options = options,
-                fieldConfig = fieldConfig,
-                transformations = transformations,
+                datasource = datasource,
+                metrics = Metrics(metrics.metrics)
             ),
-            propertiesSetter
+            repeat = repeat,
+            timeRange = timerange,
+            options = options,
+            fieldConfig = fieldConfig,
+            transformations = transformations,
         )
+    ) {
+        json -> propertiesSetters.forEach { it(json) }
     }
+
 }
 
 fun PanelContainerBuilder.timeSeriesPanel(title: String, build: TimeSeriesPanelBuilder.() -> Unit) {

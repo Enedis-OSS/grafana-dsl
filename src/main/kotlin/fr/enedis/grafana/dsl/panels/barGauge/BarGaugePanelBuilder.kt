@@ -8,7 +8,6 @@ import fr.enedis.grafana.dsl.metrics.DashboardMetric
 import fr.enedis.grafana.dsl.metrics.Metrics
 import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.panels.*
-import fr.enedis.grafana.dsl.panels.gauge.*
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
 import fr.enedis.grafana.dsl.variables.Variable
@@ -21,7 +20,7 @@ class BarGaugePanelBuilder(
 
     private var propertiesSetter: (JSONObject) -> Unit = {}
 
-    private var timerange = Timerange()
+    private var timerange = TimeRange()
 
     private var repeat: Repeat? = null
 
