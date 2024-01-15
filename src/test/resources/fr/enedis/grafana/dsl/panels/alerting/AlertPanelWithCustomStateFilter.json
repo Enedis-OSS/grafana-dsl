@@ -1,0 +1,32 @@
+{
+  "datasource": "Zabbix",
+  "editable": true,
+  "nullPointMode": "null",
+  "options": {
+    "maxItems": 10,
+    "dashboardAlerts": false,
+    "dashboardTitle": "",
+    "stateFilter": {
+      "no_data": false,
+      "paused": true,
+      "execution_error": false,
+      "ok": true,
+      "alerting": false,
+      "pending": false
+    },
+    "alertName": "",
+    "sortOrder": 5,
+    "showOptions": "current"
+  },
+  "links": [],
+  "id": 1,
+  "title": "Test Panel",
+  "type": "alertlist",
+  "targets": [],
+  "gridPos": {
+    "x": 0,
+    "h": 12,
+    "y": 0,
+    "w": 24
+  }
+}
