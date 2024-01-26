@@ -51,6 +51,35 @@ class ImageItPanelBuilder(
 }
 
 
+/**
+ * The support of pierosavi-imageit-panel plugin will stop at Grafana 9.0, you can use the Text Panel instead.
+ * You can replace the imageItPanel() function with the textPanel() function like this:
+ * ```kotlin
+ *  imageItPanel("My Image") {
+ *      bounds = 3 to 6
+ *      transparent = true
+ *      datasource = Zabbix
+ *      options {
+ *          imageUrl = "https://placehold.it/100x100&text=ImageIt+Panel"
+ *      }
+ *  }
+ *  // can be replaced with
+ *  textPanel("My Image") {
+ *       bounds = 3 to 6
+ *       transparent = true
+ *       mode = ContentMode.HTML
+ *       content = """
+ *           <center>
+ *               <img style="height:${6 * 30}px;" src="https://placehold.it/100x100&text=ImageIt+Panel">
+ *           </center>
+ *       """.trimIndent()
+ *  }
+ *  // you can adapt the usage meets your needs
+ *
+ * ```
+ * @see textPanel
+ */
+@Deprecated("The support will stop at Grafana 9.0, you can use the Text Panel instead")
 fun PanelContainerBuilder.imageItPanel(title: String, build: ImageItPanelBuilder.() -> Unit) {
     val builder = ImageItPanelBuilder(title, panelLayoutGenerator)
     builder.build()
