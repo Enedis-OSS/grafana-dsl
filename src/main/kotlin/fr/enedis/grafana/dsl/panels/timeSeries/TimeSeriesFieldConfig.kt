@@ -1,7 +1,6 @@
 package fr.enedis.grafana.dsl.panels.timeSeries
 
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
@@ -13,6 +12,7 @@ import fr.enedis.grafana.dsl.panels.gauge.Mapping
 import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
 import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfig
 import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfigBuilder
+import org.json.JSONObject
 
 /**
  * Used to change how the data is displayed in visualizations
@@ -86,5 +86,11 @@ class TimeSeriesPanelFieldConfigBuilder(private val nullValueMode: NullValue = N
         val builder = OverrideFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
+    }
+
+    fun custom(build: CustomFieldConfigBuilder.() -> Unit) {
+        val builder = CustomFieldConfigBuilder()
+        builder.build()
+        custom = builder.createCustom()
     }
 }
