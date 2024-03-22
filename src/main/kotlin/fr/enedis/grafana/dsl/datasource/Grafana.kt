@@ -11,9 +11,9 @@ object Grafana : GrafanaDatasource {
 }
 
 /**
- * Create elastic datasource
+ * Create grafana datasource
  */
-fun elasticDatasource(name: String): GrafanaDatasource = SimpleGrafanaDatasource(name)
+fun grafanaDatasource(name: String): GrafanaDatasource = SimpleGrafanaDatasource(name)
 
 internal class SimpleGrafanaDatasource(private val name: String) : GrafanaDatasource {
     override fun asDatasourceName(): String = name
