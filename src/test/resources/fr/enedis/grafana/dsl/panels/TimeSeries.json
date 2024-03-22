@@ -1,119 +1,106 @@
 {
   "graphTooltip": 0,
   "schemaVersion": 16,
-  "panels": [
-    {
-      "editable": true,
-      "nullPointMode": "null",
-      "title": "time series panel",
-      "type": "timeseries",
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
+  "panels": [{
+    "editable": true,
+    "nullPointMode": "null",
+    "title": "time series panel",
+    "type": "timeseries",
+    "fieldConfig": {
+      "defaults": {
+        "unit": "none",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": []
+        },
+        "mappings": [],
+        "nullValueMode": "null",
+        "custom": {
+          "axisPlacement": "auto",
+          "axisCenteredZero": false,
+          "fillOpacity": 20,
+          "showPoints": "auto",
+          "lineInterpolation": "linear",
+          "lineWidth": 1,
+          "thresholdsStyle": {"mode": "off"},
+          "axisBorderShow": false,
+          "axisLabel": "",
+          "pointSize": 5,
+          "hideFrom": {
+            "tooltip": false,
+            "viz": false,
+            "legend": false
           },
-          "mappings": [],
-          "nullValueMode": "null",
-          "custom": {
-            "axisPlacement": "auto",
-            "axisCenteredZero": false,
-            "fillOpacity": 20,
-            "showPoints": "auto",
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "thresholdsStyle": {
-              "mode": "off"
-            },
-            "axisBorderShow": false,
-            "axisLabel": "",
-            "pointSize": 5,
-            "hideFrom": {
-              "tooltip": false,
-              "viz": false,
-              "legend": false
-            },
-            "axisColorMode": "text",
-            "lineStyle": {
-              "fill": "dot",
-              "dash": [
-                10,
-                20
-              ]
-            },
-            "spanNulls": false,
-            "insertNulls": 3600000,
-            "drawStyle": "line",
-            "gradientMode": "hue",
-            "barAlignment": 0,
-            "stacking": {
-              "mode": "none",
-              "group": "A"
-            },
-            "scaleDistribution": {
-              "type": "linear"
-            }
-          }
-        },
-        "overrides": []
+          "axisColorMode": "text",
+          "lineStyle": {
+            "fill": "dot",
+            "dash": [
+              10,
+              20
+            ]
+          },
+          "spanNulls": false,
+          "insertNulls": 3600000,
+          "drawStyle": "line",
+          "gradientMode": "hue",
+          "barAlignment": 0,
+          "stacking": {
+            "mode": "none",
+            "group": "A"
+          },
+          "scaleDistribution": {"type": "linear"}
+        }
       },
-      "targets": [],
-      "gridPos": {
-        "x": 0,
-        "h": 12,
-        "y": 0,
-        "w": 24
+      "overrides": []
+    },
+    "targets": [],
+    "gridPos": {
+      "x": 0,
+      "h": 12,
+      "y": 0,
+      "w": 24
+    },
+    "datasource": "grafana",
+    "transformations": [],
+    "hideTimeOverride": false,
+    "options": {
+      "displayLabels": [],
+      "showValue": "never",
+      "legend": {
+        "showLegend": true,
+        "width": 21,
+        "sortDesc": false,
+        "placement": "bottom",
+        "isVisible": true,
+        "displayMode": "table",
+        "calcs": [
+          "last",
+          "first"
+        ]
       },
-      "datasource": "grafana",
-      "transformations": [],
-      "hideTimeOverride": false,
-      "options": {
-        "displayLabels": [],
-        "showValue": "never",
-        "legend": {
-          "showLegend": true,
-          "width": 21,
-          "sortDesc": false,
-          "placement": "bottom",
-          "isVisible": true,
-          "displayMode": "table",
-          "calcs": [
-            "last",
-            "first"
-          ]
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        },
-        "reduceOptions": {
-          "fields": "",
-          "calcs": [
-            "lastNotNull"
-          ],
-          "values": false
-        },
-        "xTickLabelSpacing": 0,
-        "stacking": "normal"
+      "tooltip": {
+        "mode": "multi",
+        "sort": "desc",
+        "maxWidth": 44
       },
-      "links": [],
-      "id": 1
-    }
-  ],
+      "reduceOptions": {
+        "fields": "",
+        "calcs": ["lastNotNull"],
+        "values": false
+      },
+      "xTickLabelSpacing": 0,
+      "stacking": "normal"
+    },
+    "links": [],
+    "id": 1
+  }],
   "editable": true,
   "timezone": "browser",
   "refresh": "30s",
-  "annotations": {
-    "list": []
-  },
+  "annotations": {"list": []},
   "title": "time series test",
-  "templating": {
-    "list": []
-  },
-  "tags": [
-    "autogenerated"
-  ],
+  "templating": {"list": []},
+  "tags": ["autogenerated"],
   "timepicker": {
     "refresh_intervals": [
       "5s",

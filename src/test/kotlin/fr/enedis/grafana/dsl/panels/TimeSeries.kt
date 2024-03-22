@@ -25,6 +25,11 @@ class TimeSeries {
                         }
                     }
                     options {
+                        tooltip = TimeSeriesTooltip(
+                            mode = TooltipDisplayMode.MULTI,
+                            sort = SortOrder.DESC,
+                            maxWidth = 44
+                        )
                         legend {
                             mode = LegendMode.TABLE
                             placement = LegendPlacement.BOTTOM
@@ -35,6 +40,7 @@ class TimeSeries {
                             calcs = listOf("last", "first")
 
                         }
+
                     }
                 }
             }

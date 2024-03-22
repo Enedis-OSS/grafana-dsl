@@ -26,6 +26,10 @@ class Custom(
     private val hideFrom: HideFrom = HideFrom(),
     private val thresholdsStyle: ThresholdsStyle = ThresholdsStyle(),
     private val lineStyle: LineStyle? = null,
+    private val axisSoftMin: Int? = null,
+    private val axisSoftMax: Int? = null,
+    private val axisWidth: Int? = null,
+    private val axisGridShow: Boolean? = null,
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "drawStyle" to drawStyle.value
@@ -48,6 +52,10 @@ class Custom(
         "hideFrom" to hideFrom
         "thresholdsStyle" to thresholdsStyle
         "lineStyle" to lineStyle
+        "axisSoftMin" to axisSoftMin
+        "axisSoftMax" to axisSoftMax
+        "axisWidth" to axisWidth
+        "axisGridShow" to axisGridShow
     }
 }
 
