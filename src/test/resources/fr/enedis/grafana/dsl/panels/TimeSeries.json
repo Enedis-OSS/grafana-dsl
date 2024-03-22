@@ -65,11 +65,28 @@
         "y": 0,
         "w": 24
       },
-      "datasource": "Graphite",
+      "datasource": "grafana",
       "transformations": [],
       "hideTimeOverride": false,
       "options": {
         "displayLabels": [],
+        "showValue": "never",
+        "legend": {
+          "showLegend": true,
+          "width": 21,
+          "sortDesc": false,
+          "placement": "bottom",
+          "isVisible": true,
+          "displayMode": "table",
+          "calcs": [
+            "last",
+            "first"
+          ]
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "reduceOptions": {
           "fields": "",
           "calcs": [
@@ -77,13 +94,7 @@
           ],
           "values": false
         },
-        "showValue": "never",
         "xTickLabelSpacing": 0,
-        "legend": {
-          "displayMode": "list",
-          "calcs": [],
-          "placement": "bottom"
-        },
         "stacking": "normal"
       },
       "links": [],
