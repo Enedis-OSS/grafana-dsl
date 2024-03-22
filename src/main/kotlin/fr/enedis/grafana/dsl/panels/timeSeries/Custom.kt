@@ -79,10 +79,12 @@ data class HideFrom(
 }
 
 data class ScaleDistribution(
-    val type: ScaleDistributionMode = ScaleDistributionMode.LINEAR
+    val type: ScaleDistributionMode = ScaleDistributionMode.LINEAR,
+    val log: Int? = null
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "type" to type.value
+        "log" to log
     }
 }
 
