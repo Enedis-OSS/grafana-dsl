@@ -69,7 +69,6 @@ class TimeSeries {
                 }
             }
         }
-        println(expectedDashboard)
         expectedDashboard.toString() shouldEqualToJson jsonFile("TimeSeries.json")
     }
 }

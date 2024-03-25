@@ -163,6 +163,7 @@ class GraphPanelBuilder(
     ) { json -> propertiesSetters.forEach { it(json) } }
 }
 
+@Deprecated("Use timeSeriesPanel instead", ReplaceWith("timeSeriesPanel(title){ build }", "fr.enedis.grafana.dsl.panels.timeSeries.timeSeriesPanel"))
 fun PanelContainerBuilder.graphPanel(title: String, build: GraphPanelBuilder.() -> Unit) {
     val builder = GraphPanelBuilder(title, panelLayoutGenerator)
     builder.build()
