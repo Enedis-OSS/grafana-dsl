@@ -23,6 +23,17 @@ class TimeSeries {
                             lineStyle = LineStyle(fill = LineStyleFill.DOT, listOf(10, 20))
                             insertNulls = SpanNulls(connectNullValue = ConnectNullValue.THRESHOLD)
                         }
+                        overrides {
+                            byName("200") {
+                                properties {
+                                    id = "color"
+                                    value = mapOf(
+                                        "fixedColor" to Color.RED.asRgbaString(),
+                                        "mode" to "fixed"
+                                    )
+                                }
+                            }
+                        }
                     }
                     options {
                         tooltip = TimeSeriesTooltip(

@@ -12,4 +12,18 @@ class PropertyFieldConfigBuilder {
             )
         )
     }
+
+    fun properties(build: PropertyBuilder.() -> Unit){
+        val builder = PropertyBuilder()
+        builder.build()
+        properties.add(PropertyFieldConfig(
+            id = builder.id,
+            value = builder.value
+        ))
+    }
+}
+
+class PropertyBuilder {
+    var id : String = ""
+    var value : Any = mapOf<String, Any>()
 }
