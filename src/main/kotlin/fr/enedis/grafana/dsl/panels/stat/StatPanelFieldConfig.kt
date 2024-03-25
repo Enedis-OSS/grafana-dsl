@@ -75,8 +75,8 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         mappings = builder.mappings
     }
 
-    fun overrides(build: OverrideFieldConfigBuilder.() -> Unit) {
-        val builder = OverrideFieldConfigBuilder()
+    fun overrides(build: OverridesFieldConfigBuilder.() -> Unit) {
+        val builder = OverridesFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
     }

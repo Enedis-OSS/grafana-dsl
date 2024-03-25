@@ -11,7 +11,7 @@ import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
 import fr.enedis.grafana.dsl.panels.gauge.Mapping
 import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
 import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfig
-import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfigBuilder
+import fr.enedis.grafana.dsl.panels.stat.OverridesFieldConfigBuilder
 import org.json.JSONObject
 
 /**
@@ -82,8 +82,8 @@ class TimeSeriesPanelFieldConfigBuilder(private val nullValueMode: NullValue = N
         mappings = builder.mappings
     }
 
-    fun overrides(build: OverrideFieldConfigBuilder.() -> Unit) {
-        val builder = OverrideFieldConfigBuilder()
+    fun overrides(build: OverridesFieldConfigBuilder.() -> Unit) {
+        val builder = OverridesFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
     }

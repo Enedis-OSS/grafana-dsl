@@ -33,6 +33,19 @@ class TimeSeries {
                                     )
                                 }
                             }
+                            override {
+                                matcher {
+                                    id = "byName"
+                                    options = "200"
+                                }
+                                properties {
+                                    id = "color"
+                                    value = mapOf(
+                                        "fixedColor" to Color.RED.asRgbaString(),
+                                        "mode" to "fixed"
+                                    )
+                                }
+                            }
                         }
                     }
                     options {
