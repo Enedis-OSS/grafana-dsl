@@ -2,7 +2,7 @@ package fr.enedis.grafana.dsl.datasource
 
 
 /**
- * Elastic datasource type
+ * Grafana datasource type
  */
 interface GrafanaDatasource : Datasource
 
