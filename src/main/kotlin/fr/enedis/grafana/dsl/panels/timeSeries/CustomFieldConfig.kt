@@ -5,7 +5,7 @@ import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.timeSeries.ConnectNullValue.THRESHOLD
 import org.json.JSONObject
 
-class Custom(
+class CustomFieldConfig(
     private val drawStyle: DrawStyle = DrawStyle.LINE,
     private val lineInterpolation: LineInterpolation = LineInterpolation.LINEAR,
     private val barAlignment: BarAlignment = BarAlignment.CENTER,

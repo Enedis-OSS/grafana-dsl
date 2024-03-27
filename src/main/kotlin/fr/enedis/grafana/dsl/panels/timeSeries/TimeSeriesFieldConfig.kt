@@ -28,7 +28,7 @@ class TimeSeriesPanelFieldConfig(
     private val mappings: List<Mapping> = emptyList(),
     private val nullValueMode: NullValue = NullValue.NULL,
     private val overrides: List<OverrideFieldConfig> = emptyList(),
-    private val custom: Custom = Custom()
+    private val custom: CustomFieldConfig = CustomFieldConfig()
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "defaults" to jsonObject {
@@ -55,7 +55,7 @@ class TimeSeriesPanelFieldConfigBuilder(private val nullValueMode: NullValue = N
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
     var overrides: List<OverrideFieldConfig> = emptyList()
-    var custom: Custom = Custom()
+    var custom: CustomFieldConfig = CustomFieldConfig()
 
     internal fun createTimeSeriesPanelFieldConfig(): TimeSeriesPanelFieldConfig = TimeSeriesPanelFieldConfig(
         unit,

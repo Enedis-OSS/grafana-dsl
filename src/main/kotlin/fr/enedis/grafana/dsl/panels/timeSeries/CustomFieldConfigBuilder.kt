@@ -23,7 +23,7 @@ class CustomFieldConfigBuilder {
     var lineStyle: LineStyle? = null
 
 
-    fun createCustom() = Custom(
+    fun createCustom() = CustomFieldConfig(
         drawStyle = drawStyle,
         lineInterpolation = lineInterpolation,
         barAlignment = barAlignment,
