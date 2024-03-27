@@ -94,7 +94,7 @@ class OverrideFieldConfig(
 
 class MatcherFieldConfig(
     private val id : String,
-    private val options: String
+    private val options: Any
 ): Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "id" to id

@@ -1,5 +1,7 @@
 package fr.enedis.grafana.dsl.panels.stat
 
+import fr.enedis.grafana.dsl.panels.Color
+
 /**
  * Builder for mappings tab
  * @author Aleksey Matveev
@@ -16,6 +18,18 @@ class OverridesFieldConfigBuilder {
         filter("byFrameRefID", name, build)
     }
 
+    fun byRegexp(regexp: String, build: PropertiesFieldConfigBuilder.() -> Unit) {
+        filter("byRegexp", regexp, build)
+    }
+
+    fun byType(type: String, build: PropertiesFieldConfigBuilder.() -> Unit) {
+        filter("byType", type, build)
+    }
+
+    fun byValue(value: Map<String, Any>, build: PropertiesFieldConfigBuilder.() -> Unit) {
+        filter("byValue", value, build)
+    }
+
     fun override(build: OverrideFieldConfigBuilder.() -> Unit) {
         val builder = OverrideFieldConfigBuilder()
         builder.build()
@@ -24,14 +38,14 @@ class OverridesFieldConfigBuilder {
 
     private fun filter(
         matcher: String,
-        name: String,
+        options: Any,
         build: PropertiesFieldConfigBuilder.() -> Unit
     ) {
         val builder = PropertiesFieldConfigBuilder()
         builder.build()
         overrides.add(
             OverrideFieldConfig(
-                matcher = MatcherFieldConfig(matcher, name),
+                matcher = MatcherFieldConfig(matcher, options),
                 properties = builder.properties
             )
         )

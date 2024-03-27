@@ -67,6 +67,23 @@
         },
         {
           "matcher": {
+            "options": {
+              "op": "lte",
+              "value": 3,
+              "reducer": "firstNotNull"
+            },
+            "id": "byValue"
+          },
+          "properties": [{
+            "value": {
+              "fixedColor": "rgba(191,27,0,1)",
+              "mode": "fixed"
+            },
+            "id": "color"
+          }]
+        },
+        {
+          "matcher": {
             "options": "200",
             "id": "byName"
           },

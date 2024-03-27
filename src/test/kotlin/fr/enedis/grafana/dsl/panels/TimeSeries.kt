@@ -33,6 +33,15 @@ class TimeSeries {
                                     )
                                 }
                             }
+                            byValue(
+                                mapOf(
+                                    "reducer" to "firstNotNull",
+                                    "op" to "lte",
+                                    "value" to 3
+                                )
+                            ) {
+                                colorScheme(color = Color.RED)
+                            }
                             override {
                                 matcher {
                                     id = "byName"
