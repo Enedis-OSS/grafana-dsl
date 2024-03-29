@@ -19,7 +19,7 @@
           "axisPlacement": "auto",
           "axisCenteredZero": false,
           "fillOpacity": 20,
-          "showPoints": "auto",
+          "showPoints": "never",
           "lineInterpolation": "linear",
           "lineWidth": 1,
           "thresholdsStyle": {"mode": "off"},

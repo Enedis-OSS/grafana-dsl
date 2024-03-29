@@ -9,7 +9,7 @@ class CustomFieldConfigBuilder {
     var gradientMode: GradientMode = GradientMode.NONE
     var spanNulls: SpanNulls = SpanNulls()
     var insertNulls: SpanNulls = SpanNulls()
-    var showPoints: ShowPointsMode = ShowPointsMode.AUTO
+    var showPoints: ShowPointsMode = ShowPointsMode.NEVER
     var pointSize: Int = 5
     var stacking: Stacking = Stacking()
     var axisPlacement: AxisPlacement = AxisPlacement.AUTO

@@ -14,7 +14,7 @@ class CustomFieldConfig(
     private val gradientMode: GradientMode = GradientMode.NONE,
     private val spanNulls: SpanNulls = SpanNulls(),
     private val insertNulls: SpanNulls = SpanNulls(), //ALWAYS is not available for this property
-    private val showPoints: ShowPointsMode = ShowPointsMode.AUTO,
+    private val showPoints: ShowPointsMode = ShowPointsMode.NEVER,
     private val pointSize: Int = 5,
     private val stacking: Stacking = Stacking(),
     private val axisPlacement: AxisPlacement = AxisPlacement.AUTO,
