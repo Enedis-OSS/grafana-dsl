@@ -5,6 +5,10 @@ import fr.enedis.grafana.dsl.dashboard.DashboardBuilder
 
 annotation class KDashboard
 
+annotation class KTag(val value: String)
+
+annotation class KTags(val value:Array<String>)
+
 /**
  * Returns JSON-string for dashboard import.
  *
