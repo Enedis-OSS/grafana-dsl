@@ -1,4 +1,4 @@
-package fr.enedis.grafana.dsl.panels
+package fr.enedis.grafana.dsl.panels.table
 
 /**
  * Specify how your data/metric query should be transformed into a table format.

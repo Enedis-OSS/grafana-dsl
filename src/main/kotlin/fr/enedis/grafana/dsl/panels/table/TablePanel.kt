@@ -1,8 +1,11 @@
-package fr.enedis.grafana.dsl.panels
+package fr.enedis.grafana.dsl.panels.table
 
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
+import fr.enedis.grafana.dsl.panels.ColumnStyle
+import fr.enedis.grafana.dsl.panels.Panel
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
 import fr.enedis.grafana.dsl.time.Duration
 
 /**
@@ -19,7 +22,8 @@ class TablePanel(
     private val repeat: Repeat? = null,
     private val styles: List<ColumnStyle> = emptyList(),
     private val columns: List<TableColumn> = emptyList(),
-    private val transform: TableTransform
+    private val transform: TableTransform,
+    private val transformations: List<PanelTransformation> = emptyList()
 ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {
@@ -29,6 +33,7 @@ class TablePanel(
         "fontSize" to "100%"
         "styles" to JsonArray(styles)
         "transform" to transform.transform
+        "transformations" to JsonArray(transformations)
         if (repeat != null) {
             embed(repeat)
         }

@@ -1,4 +1,4 @@
-package fr.enedis.grafana.dsl.panels
+package fr.enedis.grafana.dsl.panels.table
 
 import fr.enedis.grafana.dsl.DashboardElement
 

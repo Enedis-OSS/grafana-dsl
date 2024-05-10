@@ -1,0 +1,56 @@
+{
+  "editable": true,
+  "columns": [],
+  "nullPointMode": "null",
+  "title": "Test Panel",
+  "type": "table",
+  "targets": [],
+  "gridPos": {
+    "x": 0,
+    "h": 12,
+    "y": 0,
+    "w": 24
+  },
+  "transform": "timeseries_aggregations",
+  "transformations": [
+    {
+      "id": "groupBy",
+      "options": {
+        "fields": {
+          "@timestamp_second": {
+            "aggregations": [
+              "first"
+            ],
+            "operation": "aggregate"
+          },
+          "meta.environment": {
+            "aggregations": [
+              "first"
+            ],
+            "operation": "aggregate"
+          },
+          "meta.file": {
+            "aggregations": [],
+            "operation": "groupby"
+          },
+          "value_numeric": {
+            "aggregations": [
+              "first"
+            ],
+            "operation": "aggregate"
+          },
+          "what": {
+            "aggregations": [
+              "allValues"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "datasource": "Graphite",
+  "links": [],
+  "fontSize": "100%",
+  "styles": [],
+  "id": 1
+}

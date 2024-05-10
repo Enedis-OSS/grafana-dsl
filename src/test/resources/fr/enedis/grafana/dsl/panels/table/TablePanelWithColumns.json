@@ -22,6 +22,7 @@
   },
   "timeFrom": "1h",
   "transform": "timeseries_aggregations",
+  "transformations": [],
   "datasource": "Graphite",
   "links": [],
   "fontSize": "100%",

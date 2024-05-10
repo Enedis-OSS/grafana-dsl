@@ -1,4 +1,4 @@
-package fr.enedis.grafana.dsl.panels
+package fr.enedis.grafana.dsl.panels.table
 
 import org.json.JSONObject
 import fr.enedis.grafana.dsl.DashboardElement
@@ -9,9 +9,12 @@ import fr.enedis.grafana.dsl.generators.PanelLayoutGenerator
 import fr.enedis.grafana.dsl.metrics.Metrics
 import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.metrics.ReferenceMetricsHolder
+import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.graph.display.seriesoverrides.SeriesOverride
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
+import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
 import fr.enedis.grafana.dsl.time.Duration
 import fr.enedis.grafana.dsl.variables.Variable
 
@@ -40,6 +43,8 @@ class TablePanelBuilder(
     var styles: List<ColumnStyle> = emptyList()
 
     var transform: TableTransform = TableTransform.TIMESERIES_AGGREGATIONS
+
+    var transformations: List<PanelTransformation> = mutableListOf()
 
     private var repeat: Repeat? = null
 
@@ -82,6 +87,12 @@ class TablePanelBuilder(
         styles = builder.styles
     }
 
+    fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
+        val builder = PanelTransformationsBuilder()
+        builder.build()
+        transformations = builder.createPanelTransformations()
+    }
+
     internal fun createPanel() = AdditionalPropertiesPanel(
         TablePanel(
             MetricPanel(
@@ -98,7 +109,8 @@ class TablePanelBuilder(
             columns = columns,
             styles = styles,
             repeat = repeat,
-            transform = transform
+            transform = transform,
+            transformations = transformations
         )
     ) { json -> propertiesSetters.forEach { it(json) } }
 }

@@ -1,4 +1,4 @@
-package fr.enedis.grafana.dsl.panels
+package fr.enedis.grafana.dsl.panels.table
 
 import fr.enedis.grafana.dsl.datasource.PromQl
 import fr.enedis.grafana.dsl.datasource.Zabbix
@@ -7,6 +7,10 @@ import fr.enedis.grafana.dsl.metrics.functions.*
 import fr.enedis.grafana.dsl.metrics.prometheus.asInstantVector
 import fr.enedis.grafana.dsl.metrics.prometheus.operators.div
 import fr.enedis.grafana.dsl.metrics.prometheus.operators.min
+import fr.enedis.grafana.dsl.panels.AbstractPanelTest
+import fr.enedis.grafana.dsl.panels.ColumnStyleType
+import fr.enedis.grafana.dsl.panels.TestContainerBuilder
+import fr.enedis.grafana.dsl.panels.YAxis
 import fr.enedis.grafana.dsl.shouldEqualToJson
 import fr.enedis.grafana.dsl.time.h
 import org.amshove.kluent.shouldBe
@@ -25,7 +29,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/EmptyTablePanel.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("EmptyTablePanel.json")
     }
 
     @Test
@@ -41,7 +45,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithCustomBounds.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithCustomBounds.json")
     }
 
     @Test
@@ -57,7 +61,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithCustomDataSource.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithCustomDataSource.json")
     }
 
     @Test
@@ -85,7 +89,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithMetrics.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithMetrics.json")
     }
 
     @Test
@@ -101,7 +105,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithCustomTimeShift.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithCustomTimeShift.json")
     }
 
     @Test
@@ -121,7 +125,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithColumns.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithColumns.json")
     }
 
     @Test
@@ -167,7 +171,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanel.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanel.json")
     }
 
 
@@ -192,6 +196,6 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         // then
         val panels = testContainer.panels
         panels.size shouldBe 1
-        panels[0].toJson().toString() shouldEqualToJson jsonFile("table/TablePanelWithPrometheusMetrics.json")
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithPrometheusMetrics.json")
     }
 }

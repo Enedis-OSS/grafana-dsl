@@ -21,6 +21,7 @@
     "w": 24
   },
   "transform": "timeseries_aggregations",
+  "transformations": [],
   "datasource": "PromQL",
   "links": [],
   "fontSize": "100%",

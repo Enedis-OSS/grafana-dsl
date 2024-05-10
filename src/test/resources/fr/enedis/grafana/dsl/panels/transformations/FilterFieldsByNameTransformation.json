@@ -7,12 +7,25 @@
   "targets": [],
   "gridPos": {
     "x": 0,
-    "h": 8,
+    "h": 12,
     "y": 0,
-    "w": 12
+    "w": 24
   },
   "transform": "timeseries_aggregations",
-  "transformations": [],
+  "transformations": [
+    {
+      "id": "filterFieldsByName",
+      "options": {
+        "include": {
+          "names": [
+            "meta.file",
+            "value_numeric (first)",
+            "meta.environment (first)"
+          ]
+        }
+      }
+    }
+  ],
   "datasource": "Graphite",
   "links": [],
   "fontSize": "100%",

@@ -12,6 +12,7 @@
     "w": 24
   },
   "transform": "timeseries_aggregations",
+  "transformations": [],
   "datasource": "Zabbix",
   "links": [],
   "fontSize": "100%",
