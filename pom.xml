@@ -122,30 +122,30 @@
     </build>
 
     <scm>
-        <developerConnection>scm:git:ssh://git@bitbucket-indus.enedis.fr:7999/del/grafana-dsl.git</developerConnection>
-        <connection>scm:git:ssh://git@bitbucket-indus.enedis.fr:7999/del/grafana-dsl.git</connection>
+        <developerConnection>ssh://git@ssh.placide.enedis.fr:31029/dev/nexus/ccma/tools/grafana-dsl.git</developerConnection>
+        <connection>scm:git:ssh://git@ssh.placide.enedis.fr:31029/dev/nexus/ccma/tools/grafana-dsl.git</connection>
         <tag>HEAD</tag>
-        <url>http://git.sid.distribution.edf.fr/projects/del/grafana-dsl/</url>
+        <url>https://placide.enedis.fr/dev/nexus/ccma/tools/grafana-dsl.git</url>
     </scm>
 
     <distributionManagement>
-        <repository>
-            <id>delivere-maven-releases</id>
-            <name>artifactory-principale-releases/delivere-maven-releases</name>
-            <url>https://artifactory-principale.enedis.fr/artifactory/delivere-maven-releases</url>
+          <repository>
+            <id>delivere-maven-releases-zca</id>
+            <name>repositoi-zca-releases/delivere-maven-releases-local</name>
+            <url>https://proxy-zci-to-repositoi-zca.enedis.fr/artifactory/delivere-maven-releases</url>
         </repository>
         <snapshotRepository>
             <id>delivere-maven-snapshots</id>
-            <name>artifactory-principale-releases/delivere-maven-snapshots</name>
-            <url>https://artifactory-principale.enedis.fr/artifactory/delivere-maven-snapshots</url>
+            <name>repositoi-zca-snapshots/delivere-maven-snapshots-local</name>
+            <url>https://proxy-zci-to-repositoi-zca.enedis.fr/artifactory/delivere-maven-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
     <repositories>
         <repository>
-            <id>proxy-maven-public</id>
-            <name>artifactory-principale-proxy-maven-public</name>
-            <url>https://artifactory-principale.enedis.fr/artifactory/proxy-maven-public</url>
+            <id>delivere-maven-releases-zca</id>
+            <name>repositoi-zca-releases-delivere</name>
+            <url>https://proxy-zci-to-repositoi-zca.enedis.fr/artifactory/delivere-maven-releases</url>
         </repository>
     </repositories>
 

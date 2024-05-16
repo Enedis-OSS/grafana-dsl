@@ -11,11 +11,11 @@ Some examples can be found [here](./src/test/kotlin/fr/enedis/grafana/dsl) in te
 - declare `delivere-maven-releases` as repository in your pom.xml:
     ```
   ...
-  <repository>
-      <id>delivere-maven-releases</id>
-      <name>artifactory-principale-releases-delivere</name>
-      <url>https://artifactory-principale.enedis.fr/artifactory/delivere-maven-releases</url>
-  </repository>
+   <repository>
+      <id>delivere-maven-releases-zca</id>
+      <name>repositoi-zca-releases-delivere</name>
+      <url>https://proxy-zci-to-repositoi-zca.enedis.fr/artifactory/delivere-maven-releases</url>
+   </repository>
   ...
   ```
   
@@ -25,7 +25,7 @@ Some examples can be found [here](./src/test/kotlin/fr/enedis/grafana/dsl) in te
   <server>
     <id>delivere-maven-releases</id>
     <username>delivere-reader</username>
-    <password>change-me</password>
+    <password>${token}</password>
    </server>
   ...
   ```
