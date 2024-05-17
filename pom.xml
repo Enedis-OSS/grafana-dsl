@@ -6,7 +6,7 @@
 
     <groupId>fr.enedis</groupId>
     <artifactId>grafana-dsl</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>grafana-dsl</name>
@@ -124,7 +124,7 @@
     <scm>
         <developerConnection>ssh://git@ssh.placide.enedis.fr:31029/dev/nexus/ccma/tools/grafana-dsl.git</developerConnection>
         <connection>scm:git:ssh://git@ssh.placide.enedis.fr:31029/dev/nexus/ccma/tools/grafana-dsl.git</connection>
-        <tag>HEAD</tag>
+        <tag>1.1.0</tag>
         <url>https://placide.enedis.fr/dev/nexus/ccma/tools/grafana-dsl.git</url>
     </scm>
 
