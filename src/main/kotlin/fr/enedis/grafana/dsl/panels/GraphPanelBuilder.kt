@@ -8,7 +8,6 @@ import fr.enedis.grafana.dsl.metrics.Metrics
 import fr.enedis.grafana.dsl.metrics.MetricsBuilder
 import fr.enedis.grafana.dsl.metrics.ReferenceMetricsHolder
 import fr.enedis.grafana.dsl.metrics.functions.Alias
-import fr.enedis.grafana.dsl.panels.gauge.GaugePanelFieldConfigBuilder
 import fr.enedis.grafana.dsl.panels.graph.display.drawoptions.HoverTooltip
 import fr.enedis.grafana.dsl.panels.graph.display.seriesoverrides.SeriesOverride
 import fr.enedis.grafana.dsl.panels.graph.display.seriesoverrides.SeriesOverrideBuilder

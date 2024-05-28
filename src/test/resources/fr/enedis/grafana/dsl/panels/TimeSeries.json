@@ -1,6 +1,6 @@
 {
   "graphTooltip": 0,
-  "schemaVersion": 16,
+  "schemaVersion": 39,
   "panels": [{
     "editable": true,
     "nullPointMode": "null",

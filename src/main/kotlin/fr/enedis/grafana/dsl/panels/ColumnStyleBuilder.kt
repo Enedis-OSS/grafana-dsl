@@ -12,7 +12,7 @@ class ColumnStyleBuilder {
     val styles = mutableListOf<ColumnStyle>()
     var type: ColumnStyleType? = null
     var decimals: Int? = null
-    var unit: YAxis.Unit = YAxis.Unit.SHORT
+    var unit: DataUnit = DataUnit.SHORT
     var alias: String? = null
     var hidden: Boolean = false
 

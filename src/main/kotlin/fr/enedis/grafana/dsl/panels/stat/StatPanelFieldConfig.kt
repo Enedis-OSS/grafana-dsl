@@ -8,6 +8,8 @@ import fr.enedis.grafana.dsl.panels.NullValue
 import fr.enedis.grafana.dsl.panels.ThresholdMode
 import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
+import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
+import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
 
 /**
  * Used to change how the data is displayed in visualizations
@@ -79,35 +81,5 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         val builder = OverridesFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
-    }
-}
-
-class OverrideFieldConfig(
-    private val matcher: MatcherFieldConfig,
-    private val properties: List<PropertyFieldConfig>
-) : Json<JSONObject> {
-    override fun toJson(): JSONObject  = jsonObject {
-        "matcher" to matcher
-        "properties" to JsonArray(properties)
-    }
-}
-
-class MatcherFieldConfig(
-    private val id : String,
-    private val options: Any
-): Json<JSONObject> {
-    override fun toJson(): JSONObject = jsonObject {
-        "id" to id
-        "options" to options
-    }
-}
-
-class PropertyFieldConfig(
-    private val id : String,
-    private val value: Any
-): Json<JSONObject> {
-    override fun toJson(): JSONObject  = jsonObject {
-        "id" to id
-        "value" to value
     }
 }

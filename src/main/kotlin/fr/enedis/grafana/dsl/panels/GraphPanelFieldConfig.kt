@@ -4,10 +4,6 @@ import org.json.JSONObject
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
-import fr.enedis.grafana.dsl.panels.NullValue
-import fr.enedis.grafana.dsl.panels.ThresholdMode
-import fr.enedis.grafana.dsl.panels.Thresholds
-import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
 import fr.enedis.grafana.dsl.panels.stat.Mapping
 import fr.enedis.grafana.dsl.panels.stat.MappingsBuilder
 

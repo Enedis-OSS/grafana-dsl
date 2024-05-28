@@ -1,7 +1,6 @@
 package fr.enedis.grafana.dsl.panels.barChart
 
 
-import org.json.JSONObject
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
@@ -11,8 +10,9 @@ import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
 import fr.enedis.grafana.dsl.panels.gauge.Mapping
 import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
-import fr.enedis.grafana.dsl.panels.stat.OverrideFieldConfig
-import fr.enedis.grafana.dsl.panels.stat.OverridesFieldConfigBuilder
+import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
+import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
+import org.json.JSONObject
 
 /**
  * Used to change how the data is displayed in visualizations

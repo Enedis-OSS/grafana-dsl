@@ -46,6 +46,8 @@ class TablePanelBuilder(
 
     var transformations: List<PanelTransformation> = mutableListOf()
 
+    var fieldConfig: TablePanelFieldConfig? = null
+
     private var repeat: Repeat? = null
 
     private val seriesOverrides: MutableList<SeriesOverride> = mutableListOf()
@@ -87,6 +89,12 @@ class TablePanelBuilder(
         styles = builder.styles
     }
 
+    fun fieldConfig(build: TablePanelFieldConfigBuilder.() -> Unit) {
+        val builder = TablePanelFieldConfigBuilder()
+        builder.build()
+        fieldConfig = builder.createTablePanelFieldConfig()
+    }
+
     fun transformations(build: PanelTransformationsBuilder.() -> Unit) {
         val builder = PanelTransformationsBuilder()
         builder.build()
@@ -110,6 +118,7 @@ class TablePanelBuilder(
             styles = styles,
             repeat = repeat,
             transform = transform,
+            fieldConfig = fieldConfig,
             transformations = transformations
         )
     ) { json -> propertiesSetters.forEach { it(json) } }

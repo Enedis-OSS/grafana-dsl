@@ -15,7 +15,7 @@ import fr.enedis.grafana.dsl.json.jsonObject
  * @since 12/12/19
  */
 class ColumnStyle(
-    private val unit: YAxis.Unit,
+    private val unit: DataUnit,
     private val decimals: Int? = null,
     private val pattern: String,
     private val alias: String? = null,

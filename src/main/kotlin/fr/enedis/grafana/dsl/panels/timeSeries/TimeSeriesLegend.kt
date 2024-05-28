@@ -36,7 +36,15 @@ class TimeSeriesLegend(
         "placement" to placement.value
         "calcs" to calcs
         "isVisible" to isVisible
-        "showLegend" to showLegend
+        if (showLegend == null) {
+            if (LegendMode.HIDDEN == mode) {
+                "showLegend" to false
+            } else {
+                "showLegend" to true
+            }
+        } else {
+            "showLegend" to showLegend
+        }
         "sortBy" to sortBy
         "sortDesc" to sortDesc
         "width" to width

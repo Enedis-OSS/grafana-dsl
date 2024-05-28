@@ -1,6 +1,7 @@
 package fr.enedis.grafana.dsl.panels.stat
 
 import fr.enedis.grafana.dsl.panels.Color
+import fr.enedis.grafana.dsl.panels.fields.PropertyFieldConfig
 
 class PropertiesFieldConfigBuilder {
     val properties = mutableListOf<PropertyFieldConfig>()

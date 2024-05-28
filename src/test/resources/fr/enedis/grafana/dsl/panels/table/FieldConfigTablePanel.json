@@ -1,0 +1,56 @@
+{
+  "editable": true,
+  "columns": [],
+  "nullPointMode": "null",
+  "title": "Test Panel",
+  "type": "table",
+  "fieldConfig": {
+    "defaults": {
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "#bf1b00",
+            "value": 0
+          }
+        ]
+      },
+      "mappings": [],
+      "custom": {
+        "align": "auto",
+        "inspect": false,
+        "cellOptions": {
+          "type": "auto"
+        }
+      }
+    },
+    "overrides": [
+      {
+        "matcher": {
+          "options": "Size en bytes",
+          "id": "byName"
+        },
+        "properties": [
+          {
+            "value": "bytes",
+            "id": "unit"
+          }
+        ]
+      }
+    ]
+  },
+  "targets": [],
+  "gridPos": {
+    "x": 0,
+    "h": 12,
+    "y": 0,
+    "w": 24
+  },
+  "transform": "timeseries_aggregations",
+  "datasource": "Graphite",
+  "transformations": [],
+  "links": [],
+  "fontSize": "100%",
+  "styles": [],
+  "id": 1
+}

@@ -7,10 +7,7 @@ import fr.enedis.grafana.dsl.metrics.functions.*
 import fr.enedis.grafana.dsl.metrics.prometheus.asInstantVector
 import fr.enedis.grafana.dsl.metrics.prometheus.operators.div
 import fr.enedis.grafana.dsl.metrics.prometheus.operators.min
-import fr.enedis.grafana.dsl.panels.AbstractPanelTest
-import fr.enedis.grafana.dsl.panels.ColumnStyleType
-import fr.enedis.grafana.dsl.panels.TestContainerBuilder
-import fr.enedis.grafana.dsl.panels.YAxis
+import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.shouldEqualToJson
 import fr.enedis.grafana.dsl.time.h
 import org.amshove.kluent.shouldBe
@@ -158,7 +155,7 @@ class TablePanelBuilderTest : AbstractPanelTest() {
             styles {
                 style("Current") {
                     type = ColumnStyleType.NUMBER
-                    unit = YAxis.Unit.PERCENT_0_100
+                    unit = DataUnit.PERCENT_0_100
                     decimals = 2
                 }
                 style("/.*/") {
@@ -173,7 +170,6 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         panels.size shouldBe 1
         panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanel.json")
     }
-
 
 
     @Test
@@ -197,5 +193,43 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         val panels = testContainer.panels
         panels.size shouldBe 1
         panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithPrometheusMetrics.json")
+    }
+
+    @Test
+    fun `should create table panel with field config`() {
+        // given
+        val testContainer = TestContainerBuilder()
+
+        // when
+        testContainer.tablePanel(title = "Test Panel") {
+            fieldConfig {
+                thresholds(ThresholdMode.ABSOLUTE) {
+                    steps {
+                        "0" to Color.RED
+                    }
+                }
+                custom {
+                    align = "auto"
+                    inspect = false
+                    cellOptionsType = "auto"
+                }
+                mappings {
+                }
+                overrides {
+                    byName("Size en bytes") {
+                        properties {
+                            id = "unit"
+                            value = "bytes"
+                        }
+                    }
+                }
+            }
+        }
+
+        // then
+        val panels = testContainer.panels
+        panels.size shouldBe 1
+        println(panels[0].toJson().toString())
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("FieldConfigTablePanel.json")
     }
 }

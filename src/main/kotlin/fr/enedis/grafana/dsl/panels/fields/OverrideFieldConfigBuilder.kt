@@ -1,6 +1,7 @@
-package fr.enedis.grafana.dsl.panels.stat
+package fr.enedis.grafana.dsl.panels.fields
 
-import fr.enedis.grafana.dsl.panels.Color
+import fr.enedis.grafana.dsl.panels.stat.PropertiesFieldConfigBuilder
+import fr.enedis.grafana.dsl.panels.stat.PropertyFieldConfigBuilder
 
 /**
  * Builder for mappings tab

@@ -23,7 +23,8 @@ class TablePanel(
     private val styles: List<ColumnStyle> = emptyList(),
     private val columns: List<TableColumn> = emptyList(),
     private val transform: TableTransform,
-    private val transformations: List<PanelTransformation> = emptyList()
+    private val transformations: List<PanelTransformation> = emptyList(),
+    private val fieldConfig: TablePanelFieldConfig? = null
 ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {
@@ -33,6 +34,7 @@ class TablePanel(
         "fontSize" to "100%"
         "styles" to JsonArray(styles)
         "transform" to transform.transform
+        "fieldConfig" to fieldConfig
         "transformations" to JsonArray(transformations)
         if (repeat != null) {
             embed(repeat)

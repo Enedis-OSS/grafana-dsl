@@ -63,7 +63,7 @@ class Dashboard(
         "editable" to editable
         "graphTooltip" to graphTooltip.value
         "links" to links
-        "schemaVersion" to 16
+        "schemaVersion" to 39
         "style" to "dark"
         "timepicker" to jsonObject {
             "nowDelay" to nowDelay?.toString()

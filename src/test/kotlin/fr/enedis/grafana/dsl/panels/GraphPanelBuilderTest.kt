@@ -335,8 +335,8 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
 
         // when
         testContainer.graphPanel(title = "Test Panel") {
-            leftYAxis = YAxis(unit = YAxis.Unit.MILLISECONDS)
-            rightYAxis = YAxis(unit = YAxis.Unit.MILLISECONDS)
+            leftYAxis = YAxis(unit = DataUnit.MILLISECONDS)
+            rightYAxis = YAxis(unit = DataUnit.MILLISECONDS)
         }
 
         // then
@@ -353,8 +353,8 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
 
         // when
         testContainer.graphPanel(title = "Test Panel") {
-            leftYAxis = YAxis(unit = YAxis.Unit.DECIMAL_BYTES)
-            rightYAxis = YAxis(unit = YAxis.Unit.DECIMAL_BYTES)
+            leftYAxis = YAxis(unit = DataUnit.DECIMAL_BYTES)
+            rightYAxis = YAxis(unit = DataUnit.DECIMAL_BYTES)
         }
 
         // then
@@ -371,8 +371,8 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
 
         // when
         testContainer.graphPanel(title = "Test Panel") {
-            leftYAxis = YAxis(unit = YAxis.Unit.BYTES)
-            rightYAxis = YAxis(unit = YAxis.Unit.BYTES)
+            leftYAxis = YAxis(unit = DataUnit.BYTES)
+            rightYAxis = YAxis(unit = DataUnit.BYTES)
         }
 
         // then
@@ -389,8 +389,8 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
 
         // when
         val build: GraphPanelBuilder.() -> Unit = {
-            leftYAxis = YAxis(unit = YAxis.Unit.NONE)
-            rightYAxis = YAxis(unit = YAxis.Unit.NONE)
+            leftYAxis = YAxis(unit = DataUnit.NONE)
+            rightYAxis = YAxis(unit = DataUnit.NONE)
         }
         testContainer.graphPanel(title = "Test Panel", build = build)
 
@@ -408,8 +408,8 @@ class GraphPanelBuilderTest : AbstractPanelTest() {
 
         // when
         testContainer.graphPanel(title = "Test Panel") {
-            leftYAxis = YAxis(unit = YAxis.Unit.PERCENT_0_100)
-            rightYAxis = YAxis(unit = YAxis.Unit.PERCENT_0_100)
+            leftYAxis = YAxis(unit = DataUnit.PERCENT_0_100)
+            rightYAxis = YAxis(unit = DataUnit.PERCENT_0_100)
         }
 
         // then
