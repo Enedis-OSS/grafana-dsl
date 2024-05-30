@@ -1,0 +1,4 @@
+### 1.2.0 (2024-05-30)
+- [feat: Field config for table + Change schema version](dev/nexus/ccma/tools/grafana-dsl@1219738331712710c10ff7616ee4fbbd1361a79a)
+### 1.1.1 (2024-05-17)
+- [chore: Gitlab CI/CD configuration ](dev/nexus/ccma/tools/grafana-dsl@1219738331712710c10ff7616ee4fbbd1361a79a)
