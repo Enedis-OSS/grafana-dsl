@@ -34,6 +34,23 @@
           {
             "value": "bytes",
             "id": "unit"
+          },
+          {
+            "value": [
+              {
+                "type": "value",
+                "options": {
+                  "toto": {
+                    "text": "tata"
+                  }
+                }
+              }
+            ],
+            "id": "mappings"
+          },
+          {
+            "value": true,
+            "id": "custom.hidden"
           }
         ]
       }

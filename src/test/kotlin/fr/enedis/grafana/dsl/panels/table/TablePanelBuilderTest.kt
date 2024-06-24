@@ -221,6 +221,8 @@ class TablePanelBuilderTest : AbstractPanelTest() {
                             id = "unit"
                             value = "bytes"
                         }
+                        valueMapping("toto" to "tata")
+                        hide()
                     }
                 }
             }

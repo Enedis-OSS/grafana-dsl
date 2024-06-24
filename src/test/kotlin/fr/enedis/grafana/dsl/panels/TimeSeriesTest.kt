@@ -7,7 +7,7 @@ import fr.enedis.grafana.dsl.panels.timeSeries.*
 import fr.enedis.grafana.dsl.shouldEqualToJson
 import org.junit.Test
 
-class TimeSeries {
+class TimeSeriesTest {
 
 
     @Test

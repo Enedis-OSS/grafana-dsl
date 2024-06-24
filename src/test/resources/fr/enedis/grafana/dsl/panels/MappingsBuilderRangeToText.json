@@ -3,9 +3,42 @@
   "schemaVersion": 39,
   "panels": [
     {
-      "datasource": "Zabbix",
       "editable": true,
       "nullPointMode": "null",
+      "title": "$hosts",
+      "type": "stat",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "mappings": [
+            {
+              "type": "range",
+              "options": {
+                "result": {
+                  "text": "0-100"
+                },
+                "from": "0",
+                "to": "100"
+              }
+            }
+          ],
+          "nullValueMode": "null"
+        },
+        "overrides": []
+      },
+      "targets": [],
+      "gridPos": {
+        "x": 0,
+        "h": 12,
+        "y": 0,
+        "w": 24
+      },
+      "datasource": "Zabbix",
+      "transformations": [],
       "hideTimeOverride": false,
       "options": {
         "justifyMode": "auto",
@@ -22,36 +55,7 @@
         "textMode": "auto"
       },
       "links": [],
-      "id": 1,
-      "title": "$hosts",
-      "type": "stat",
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "mappings": [
-            {
-              "from": "0",
-              "text": "0-100",
-              "to": "100",
-              "type": 2
-            }
-          ],
-          "nullValueMode": "null"
-        },
-        "overrides": []
-      },
-      "targets": [],
-      "gridPos": {
-        "x": 0,
-        "h": 12,
-        "y": 0,
-        "w": 24
-      },
-      "transformations": []
+      "id": 1
     }
   ],
   "editable": true,

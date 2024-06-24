@@ -10,8 +10,7 @@ import fr.enedis.grafana.dsl.json.jsonObject
  * @since 03.11.2020
  */
 interface Mapping : Json<JSONObject> {
-    val type: Int
-    val name: String
+    val type: String
 }
 
 /**
@@ -23,14 +22,15 @@ class ValueToTextMapping(
     private val value: String = "",
     private val text: String = ""
 ) : Mapping {
-    override val type: Int = 1
-    override val name: String = ""
+    override val type: String = "value"
 
     override fun toJson() = jsonObject {
         "type" to type
-        "op" to "="
-        "text" to text
-        "value" to value
+        "options" to jsonObject {
+            value to jsonObject {
+                "text" to text
+            }
+        }
     }
 
     class Builder {
@@ -55,14 +55,17 @@ class RangeToTextMapping(
     private val to: String = "",
     private val text: String = ""
 ) : Mapping {
-    override val type: Int = 2
-    override val name: String = "value to text"
+    override val type: String = "range"
 
     override fun toJson() = jsonObject {
         "type" to type
-        "from" to from
-        "text" to text
-        "to" to to
+        "options" to jsonObject {
+            "from" to from
+            "to" to to
+            "result" to jsonObject {
+                "text" to text
+            }
+        }
     }
 
     class Builder {

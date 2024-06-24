@@ -1,5 +1,6 @@
 package fr.enedis.grafana.dsl.panels.stat
 
+import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.Color
 import fr.enedis.grafana.dsl.panels.fields.PropertyFieldConfig
 
@@ -20,6 +21,31 @@ class PropertiesFieldConfigBuilder {
                 "fixedColor" to color.asRgbaString(),
                 "mode" to mode.value,
                 "seriesBy" to seriesBy?.value,
+            )
+        }
+    }
+
+    fun hide() {
+        properties {
+            id = "custom.hidden"
+            value = true
+        }
+    }
+
+    fun valueMapping(vararg mappings: Pair<String, String>) {
+        properties {
+            id = "mappings"
+            value = listOf(
+                jsonObject {
+                    "type" to "value"
+                    "options" to jsonObject {
+                        mappings.map {
+                            it.first to jsonObject {
+                                "text" to it.second
+                            }
+                        }
+                    }
+                }
             )
         }
     }

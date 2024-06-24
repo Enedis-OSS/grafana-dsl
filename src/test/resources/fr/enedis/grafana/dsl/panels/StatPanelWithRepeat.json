@@ -22,10 +22,12 @@
           },
           "mappings": [
             {
-              "op": "=",
-              "type": 1,
-              "text": "N/A",
-              "value": "null"
+              "type": "value",
+              "options": {
+                "null": {
+                  "text": "N/A"
+                }
+              }
             }
           ],
           "nullValueMode": "null"
@@ -55,7 +57,6 @@
           }
         }
       ],
-      "transformations": [],
       "gridPos": {
         "x": 0,
         "h": 3,
@@ -65,6 +66,7 @@
       "minSpan": 2,
       "datasource": "Zabbix",
       "repeat": "hosts",
+      "transformations": [],
       "hideTimeOverride": true,
       "options": {
         "justifyMode": "auto",
