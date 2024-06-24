@@ -1,3 +1,5 @@
+### 1.3.0 (2024-06-24)
+- [feat: add override value mapping for table panel](dev/nexus/ccma/tools/grafana-dsl@89fdd6859ceaacdb96ea34d731fc940a4708217d)
 ### 1.2.0 (2024-05-30)
 - [feat: Field config for table + Change schema version](dev/nexus/ccma/tools/grafana-dsl@1219738331712710c10ff7616ee4fbbd1361a79a)
 ### 1.1.1 (2024-05-17)
