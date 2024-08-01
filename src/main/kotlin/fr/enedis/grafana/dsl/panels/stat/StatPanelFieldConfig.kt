@@ -4,12 +4,10 @@ import org.json.JSONObject
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
-import fr.enedis.grafana.dsl.panels.NullValue
-import fr.enedis.grafana.dsl.panels.ThresholdMode
-import fr.enedis.grafana.dsl.panels.Thresholds
-import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
+import fr.enedis.grafana.dsl.panels.*
 import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
 import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
+import java.util.*
 
 /**
  * Used to change how the data is displayed in visualizations
@@ -22,6 +20,7 @@ class StatPanelFieldConfig(
     private val mappings: List<Mapping> = emptyList(),
     private val nullValueMode: NullValue = NullValue.NULL,
     private val unit: String = "none",
+    private val colorScheme: ColorScheme? = null,
     private val decimals: String? = null,
     private val noValue: String? = null,
     private val overrides: List<OverrideFieldConfig> = emptyList()
@@ -30,6 +29,7 @@ class StatPanelFieldConfig(
     override fun toJson(): JSONObject = jsonObject {
         "defaults" to jsonObject {
             "unit" to unit
+            "color" to colorScheme
             "decimals" to decimals
             "noValue" to noValue
             "displayName" to displayName
@@ -51,6 +51,7 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
     var unit: String = "none"
+    var colorScheme: ColorScheme? = null
     var decimals: String? = null
     var noValue: String? = null
     var overrides: List<OverrideFieldConfig> = emptyList()
@@ -60,6 +61,7 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         mappings,
         nullValueMode,
         unit,
+        colorScheme,
         decimals,
         noValue,
         overrides
@@ -82,4 +84,15 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
         builder.build()
         overrides = builder.overrides
     }
+}
+
+class ColorScheme(private val mode: ColorSchemeMode, private val fixedColor: Color) : Json<JSONObject> {
+    override fun toJson(): JSONObject = jsonObject {
+        "mode" to mode.name.lowercase(Locale.getDefault())
+        "fixedColor" to fixedColor.asString()
+    }
+}
+
+enum class ColorSchemeMode {
+    FIXED, SHADES, THRESHOLDS
 }

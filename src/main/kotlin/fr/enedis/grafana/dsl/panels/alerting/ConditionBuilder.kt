@@ -19,13 +19,13 @@ class ConditionBuilder {
         params = *arrayOf(metricId, duration.toString(), now.toString())
     )
 
-    infix fun AlertQuery.isAbove(value: Int) = QueryCondition(evaluator = AlertEvaluator("gt", value), query = this)
+    infix fun AlertQuery.isAbove(value: Long) = QueryCondition(evaluator = AlertEvaluator("gt", value), query = this)
 
-    infix fun AlertQuery.isBelow(value: Int) = QueryCondition(evaluator = AlertEvaluator("lt", value), query = this)
+    infix fun AlertQuery.isBelow(value: Long) = QueryCondition(evaluator = AlertEvaluator("lt", value), query = this)
 
-    fun AlertQuery.isOutsideRange(from: Int, to: Int) = QueryCondition(evaluator = AlertEvaluator("outside_range", from, to), query = this)
+    fun AlertQuery.isOutsideRange(from: Long, to: Long) = QueryCondition(evaluator = AlertEvaluator("outside_range", from, to), query = this)
 
-    fun AlertQuery.isInsideRange(from: Int, to: Int) = QueryCondition(evaluator = AlertEvaluator("inside_range", from, to), query = this)
+    fun AlertQuery.isInsideRange(from: Long, to: Long) = QueryCondition(evaluator = AlertEvaluator("inside_range", from, to), query = this)
 
     fun sum(condition: AlertingCondition) = SumCondition(condition)
 

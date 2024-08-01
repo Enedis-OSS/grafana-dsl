@@ -1,3 +1,5 @@
+### 1.3.1 (2024-08-01)
+- [chore: use long for alert threshold](dev/nexus/ccma/tools/grafana-dsl@d201886f9dcd59e425c21b23b98346d80e8637cc)
 ### 1.3.0 (2024-06-24)
 - [feat: add override value mapping for table panel](dev/nexus/ccma/tools/grafana-dsl@89fdd6859ceaacdb96ea34d731fc940a4708217d)
 ### 1.2.0 (2024-05-30)
