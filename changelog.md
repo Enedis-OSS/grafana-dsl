@@ -1,3 +1,5 @@
+### 1.3.2 (2024-09-17)
+- [[ISECU-798]: map within_range condition for alerting query and add custom mappings for timeSeries](https://placide.enedis.fr/dev/nexus/ccma/tools/grafana-dsl/-/commit/07280376e102b58926d4094942fbc14f8d4d35e4)
 ### 1.3.1 (2024-08-01)
 - [chore: use long for alert threshold](dev/nexus/ccma/tools/grafana-dsl@d201886f9dcd59e425c21b23b98346d80e8637cc)
 ### 1.3.0 (2024-06-24)
