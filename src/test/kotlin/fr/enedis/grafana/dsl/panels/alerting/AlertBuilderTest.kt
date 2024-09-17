@@ -42,4 +42,39 @@ class AlertBuilderTest {
 
         alertingPanelJson shouldEqualToJson jsonFile("AlertingPanel.json")
     }
+
+    @Test
+    fun `should create alerting panel with within_range condition`() {
+        val builder = AlertBuilder("Alert name when within_range condition").apply {
+            frequency = 5.m
+            pendingFor = 10.m
+            onNoData = Alerting
+            message = "Alert message when within_range condition"
+            notificationUids += "ABC"
+            notificationUids += "DEF"
+
+            conditions {
+                query(
+                    ReferencedDashboardMetric(
+                        StringMetric("*"),
+                        "A",
+                        false
+                    ),
+                    15.m
+                ).isWithinRange(3, 3)
+            }
+
+            thresholds {
+                threshold { ThresholdDsl.gt(3000) }
+            }
+        }
+
+        val alertingPanelJson = JSONObject()
+            .apply {  builder.createAlertingPanel().invoke(this) }
+            .toString()
+
+        println(alertingPanelJson)
+
+        alertingPanelJson shouldEqualToJson jsonFile("AlertingPanelWithWithinRangCondition.json")
+    }
 }

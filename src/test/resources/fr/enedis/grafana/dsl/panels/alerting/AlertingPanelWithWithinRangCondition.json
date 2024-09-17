@@ -1,0 +1,54 @@
+{
+  "thresholds": [
+    {
+      "op": "gt",
+      "line": true,
+      "colorMode": "critical",
+      "fill": true,
+      "value": 3000
+    }
+  ],
+  "alert": {
+    "handler": 1,
+    "executionErrorState": "alerting",
+    "name": "Alert name when within_range condition",
+    "for": "10m",
+    "noDataState": "alerting",
+    "message": "Alert message when within_range condition",
+    "conditions": [
+      {
+        "query": {
+          "datasourceId": 1,
+          "model": {
+            "hide": false,
+            "target": "*",
+            "refId": "A"
+          },
+          "params": [
+            "A",
+            "15m",
+            "now"
+          ]
+        },
+        "type": "query",
+        "evaluator": {
+          "type": "within_range",
+          "params": [
+            3,
+            3
+          ]
+        }
+      }
+    ],
+    "notifications": [
+      {
+        "uid": "ABC"
+      },
+      {
+        "uid": "DEF"
+      }
+    ],
+    "frequency": "5m",
+    "alertRuleTags": {}
+  }
+}

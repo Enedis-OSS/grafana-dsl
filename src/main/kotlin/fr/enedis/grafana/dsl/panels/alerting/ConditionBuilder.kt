@@ -27,6 +27,8 @@ class ConditionBuilder {
 
     fun AlertQuery.isInsideRange(from: Long, to: Long) = QueryCondition(evaluator = AlertEvaluator("inside_range", from, to), query = this)
 
+    fun AlertQuery.isWithinRange(from: Long, to: Long) = QueryCondition(evaluator = AlertEvaluator("within_range", from, to), query = this)
+
     fun sum(condition: AlertingCondition) = SumCondition(condition)
 
     fun max(condition: AlertingCondition) = MaxCondition(condition)

@@ -1,6 +1,5 @@
 package fr.enedis.grafana.dsl.panels.timeSeries
 
-
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
@@ -8,8 +7,6 @@ import fr.enedis.grafana.dsl.panels.NullValue
 import fr.enedis.grafana.dsl.panels.ThresholdMode
 import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
-import fr.enedis.grafana.dsl.panels.gauge.Mapping
-import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
 import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
 import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
 import org.json.JSONObject

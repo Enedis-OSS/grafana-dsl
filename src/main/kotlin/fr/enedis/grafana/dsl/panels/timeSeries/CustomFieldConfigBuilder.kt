@@ -21,7 +21,8 @@ class CustomFieldConfigBuilder {
     var hideFrom: HideFrom = HideFrom()
     var thresholdsStyle: ThresholdsStyle = ThresholdsStyle()
     var lineStyle: LineStyle? = null
-
+    var axisSoftMin: Int? = null
+    var axisSoftMax: Int? = null
 
     fun createCustom() = CustomFieldConfig(
         drawStyle = drawStyle,
@@ -44,5 +45,7 @@ class CustomFieldConfigBuilder {
         hideFrom = hideFrom,
         thresholdsStyle = thresholdsStyle,
         lineStyle = lineStyle,
+        axisSoftMin = axisSoftMin,
+        axisSoftMax = axisSoftMax
     )
 }
