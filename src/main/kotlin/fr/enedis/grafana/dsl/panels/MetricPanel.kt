@@ -20,7 +20,7 @@ class MetricPanel(
 ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {
-        "datasource" to datasource.asDatasourceName()
+        "datasource" to datasource.asDatasourceRefOrName()
         "nullPointMode" to nullValue.value
         "targets" to metrics
         "editable" to true

@@ -80,7 +80,7 @@ class QueryVariable private constructor(
     )
 
     override fun toJson() = jsonObject(delegate.toJson()) {
-        "datasource" to datasource.asDatasourceName()
+        "datasource" to datasource.asDatasourceRefOrName()
         "refresh" to refreshMode.mode
         "regex" to regex
         "sort" to sortOrder.code

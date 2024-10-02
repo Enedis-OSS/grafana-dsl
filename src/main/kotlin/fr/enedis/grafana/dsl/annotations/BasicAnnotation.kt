@@ -30,6 +30,6 @@ class BasicAnnotation(
         "enable" to enabled
         "hide" to hidden
         "iconColor" to color.asRgbaString()
-        "datasource" to datasource.asDatasourceName()
+        "datasource" to datasource.asDatasourceRefOrName()
     }
 }
