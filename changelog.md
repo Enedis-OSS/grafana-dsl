@@ -1,3 +1,5 @@
+## 1.3.4 (2024-10-02)
+- [feat: identify datasource by uid](dev/nexus/ccma/tools/grafana-dsl@29b8e7adace8e60da33b27557262b39239012b23)
 ## 1.3.3 (2024-09-23)
 - [[ISECU-774] ajout du panel state timeline au dsl](https://placide.enedis.fr/dev/nexus/ccma/tools/grafana-dsl/-/commit/d9b3a1385955d881f39adaa5ffe4a4a06188c764)
 ### 1.3.2 (2024-09-17)
