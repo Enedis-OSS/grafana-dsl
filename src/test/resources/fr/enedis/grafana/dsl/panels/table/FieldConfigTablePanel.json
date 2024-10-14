@@ -5,6 +5,7 @@
   "title": "Test Panel",
   "type": "table",
   "fieldConfig": {
+    "unit": "none",
     "defaults": {
       "thresholds": {
         "mode": "absolute",

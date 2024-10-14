@@ -3,6 +3,7 @@ package fr.enedis.grafana.dsl.panels.table
 import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
+import fr.enedis.grafana.dsl.panels.DataUnit
 import fr.enedis.grafana.dsl.panels.ThresholdMode
 import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
@@ -13,12 +14,14 @@ import fr.enedis.grafana.dsl.panels.stat.MappingsBuilder
 import org.json.JSONObject
 
 class TablePanelFieldConfig(
+    private val unit: DataUnit = DataUnit.NONE,
     private val thresholds: Thresholds = Thresholds(),
     private val mappings: List<Mapping> = emptyList(),
     private val overrides: List<OverrideFieldConfig> = emptyList(),
     private val custom: TableCustomFieldConfig = TableCustomFieldConfig()
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
+        "unit" to unit.unit
         "defaults" to jsonObject {
             "thresholds" to thresholds
             "mappings" to JsonArray(mappings)
@@ -29,11 +32,13 @@ class TablePanelFieldConfig(
 }
 
 class TablePanelFieldConfigBuilder() {
+    var unit: DataUnit = DataUnit.NONE
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
     var overrides: List<OverrideFieldConfig> = emptyList()
     var custom: TableCustomFieldConfig = TableCustomFieldConfig()
     internal fun createTablePanelFieldConfig(): TablePanelFieldConfig = TablePanelFieldConfig(
+        unit,
         thresholds,
         mappings,
         overrides,
