@@ -4,6 +4,7 @@ import fr.enedis.grafana.dsl.json.Json
 import fr.enedis.grafana.dsl.json.jsonObject
 import fr.enedis.grafana.dsl.panels.alerting.ShowOptions.CURRENT
 import fr.enedis.grafana.dsl.panels.alerting.SortOrder.TIME_DESC
+import org.json.JSONArray
 import org.json.JSONObject
 
 class AlertPanelDisplayOptions(
@@ -14,7 +15,8 @@ class AlertPanelDisplayOptions(
     private val alertNameFilter: String = "",
     private val dashboardTitleFilter: String = "",
     private val folderId: Long? = null,
-    private val stateFilter: AlertPanelStateFilter = AlertPanelStateFilter()
+    private val stateFilter: AlertPanelStateFilter = AlertPanelStateFilter(),
+    private val tags: Collection<String>? = null
 
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
@@ -33,6 +35,7 @@ class AlertPanelDisplayOptions(
             "alerting" to stateFilter.alerting
             "pending" to stateFilter.pending
         }
+        "tags" to JSONArray(tags)
     }
 }
 

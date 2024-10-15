@@ -16,7 +16,8 @@
     },
     "alertName": "",
     "sortOrder": 5,
-    "showOptions": "current"
+    "showOptions": "current",
+    "tags": []
   },
   "links": [],
   "id": 1,

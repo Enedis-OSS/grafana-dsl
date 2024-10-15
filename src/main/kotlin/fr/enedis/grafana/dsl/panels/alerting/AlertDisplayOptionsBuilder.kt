@@ -1,7 +1,5 @@
 package fr.enedis.grafana.dsl.panels.alerting
 
-import fr.enedis.grafana.dsl.panels.imageIt.ImageItDisplayOptions
-
 class AlertDisplayOptionsBuilder {
     var showOptions: ShowOptions = ShowOptions.CURRENT
     var maxItems: Int = 10
@@ -11,6 +9,7 @@ class AlertDisplayOptionsBuilder {
     var dashboardTitleFilter: String = ""
     var folderId: Long? = null
     var stateFilter: AlertPanelStateFilter = AlertPanelStateFilter()
+    var tags: Collection<String>? = null
 
     fun createAlertDisplayOptions(): AlertPanelDisplayOptions = AlertPanelDisplayOptions(
         showOptions = showOptions,
@@ -21,5 +20,6 @@ class AlertDisplayOptionsBuilder {
         dashboardTitleFilter = dashboardTitleFilter,
         folderId = folderId,
         stateFilter = stateFilter,
+        tags = tags
     )
 }
