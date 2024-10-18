@@ -1,3 +1,5 @@
+## 1.3.5 (2024-10-14)
+- [fix/ add unit for table panel](dev/nexus/ccma/tools/grafana-dsl@1c00d155ac6e0ce529e8b57d33ae3a985e8191bc)
 ## 1.3.4 (2024-10-02)
 - [feat: identify datasource by uid](dev/nexus/ccma/tools/grafana-dsl@29b8e7adace8e60da33b27557262b39239012b23)
 ## 1.3.3 (2024-09-23)
