@@ -18,4 +18,11 @@ object nowD : Timestamp {
 
         override fun toString() = "now/d-$duration"
     }
+
+    operator fun plus(duration: Duration) = object : Timestamp {
+
+        override fun toJson() = "now/d+$duration"
+
+        override fun toString() = "now/d+$duration"
+    }
 }
