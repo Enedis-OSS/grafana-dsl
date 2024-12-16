@@ -9,8 +9,8 @@ import fr.enedis.grafana.dsl.panels.Thresholds
 import fr.enedis.grafana.dsl.panels.ThresholdsBuilder
 import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
 import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
-import fr.enedis.grafana.dsl.panels.stat.Mapping
-import fr.enedis.grafana.dsl.panels.stat.MappingsBuilder
+import fr.enedis.grafana.dsl.panels.table.Mapping
+import fr.enedis.grafana.dsl.panels.table.MappingsBuilder
 import org.json.JSONObject
 
 class TablePanelFieldConfig(
