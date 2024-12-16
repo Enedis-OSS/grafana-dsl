@@ -38,6 +38,8 @@ class TablePanelBuilder(
 
     var timeFrom: Duration? = null
 
+    var position: Position? = null
+
     var columns: List<TableColumn> = emptyList()
 
     var styles: List<ColumnStyle> = emptyList()
@@ -107,7 +109,7 @@ class TablePanelBuilder(
                 BasePanel(
                     id = panelLayoutGenerator.nextId(),
                     title = title,
-                    position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
+                    position = position ?: panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
                     description = description
                 ),
                 datasource = datasource,

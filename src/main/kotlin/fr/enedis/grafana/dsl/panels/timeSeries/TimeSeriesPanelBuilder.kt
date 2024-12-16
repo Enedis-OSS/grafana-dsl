@@ -30,6 +30,8 @@ class TimeSeriesPanelBuilder(
 
     var metrics = ReferenceMetricsHolder()
 
+    var position: Position? = null
+
     var options: TimeSeriesPanelDisplayOptions = TimeSeriesPanelDisplayOptions()
 
     var fieldConfig: TimeSeriesPanelFieldConfig = TimeSeriesPanelFieldConfig()
@@ -85,7 +87,7 @@ class TimeSeriesPanelBuilder(
                 BasePanel(
                     id = panelLayoutGenerator.nextId(),
                     title = title,
-                    position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
+                    position = position ?: panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
                     description = description
                 ),
                 datasource = datasource,

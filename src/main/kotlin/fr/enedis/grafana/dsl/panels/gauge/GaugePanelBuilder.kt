@@ -31,6 +31,8 @@ class GaugePanelBuilder(
 
     private var repeat: Repeat? = null
 
+    var position: Position? = null
+
     var metrics: List<DashboardMetric> = mutableListOf()
 
     var datasource: Datasource = Zabbix
@@ -97,7 +99,7 @@ class GaugePanelBuilder(
                     BasePanel(
                         id = panelLayoutGenerator.nextId(),
                         title = title,
-                        position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second)
+                        position = position ?: panelLayoutGenerator.nextPosition(bounds.first, bounds.second),
                     ),
                     datasource = datasource,
                     metrics = Metrics(metrics)
