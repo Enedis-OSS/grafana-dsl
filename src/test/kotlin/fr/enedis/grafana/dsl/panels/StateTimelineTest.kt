@@ -50,6 +50,6 @@ class StateTimelineTest {
                 }
             }
         }
-        expectedDashboard.toString() shouldEqualToJson jsonFile("TimeSeries.json")
+        expectedDashboard.toString() shouldEqualToJson jsonFile("StateTimeline.json")
     }
 }

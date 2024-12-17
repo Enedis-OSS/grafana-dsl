@@ -7,6 +7,7 @@ import fr.enedis.grafana.dsl.panels.Panel
 import fr.enedis.grafana.dsl.panels.TimeRange
 import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
+import fr.enedis.grafana.dsl.time.Duration
 
 class TimeSeriesPanel(private val basePanel: Panel,
                       private val timeRange: TimeRange = TimeRange(),
@@ -14,6 +15,7 @@ class TimeSeriesPanel(private val basePanel: Panel,
                       private val fieldConfig: TimeSeriesPanelFieldConfig = TimeSeriesPanelFieldConfig(),
                       private val options: TimeSeriesPanelDisplayOptions = TimeSeriesPanelDisplayOptions(),
                       private val transformations: List<PanelTransformation> = emptyList(),
+                      private val interval: Duration? = null,
                       private val legend: Legend = Legend.EMPTY,
 ) : Panel {
 
@@ -25,6 +27,7 @@ class TimeSeriesPanel(private val basePanel: Panel,
         "fieldConfig" to fieldConfig
         "options" to options
         "transformations" to JsonArray(transformations)
+        "interval" to interval
     }
 
 }

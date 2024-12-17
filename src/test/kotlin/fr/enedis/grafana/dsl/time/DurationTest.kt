@@ -21,7 +21,8 @@ class DurationTest {
             arrayOf(10.m, "10m"),
             arrayOf(10.h, "10h"),
             arrayOf(10.d, "10d"),
-            arrayOf(10.w, "10w")
+            arrayOf(10.w, "10w"),
+            arrayOf(Duration.auto, "auto")
         )
     }
 }

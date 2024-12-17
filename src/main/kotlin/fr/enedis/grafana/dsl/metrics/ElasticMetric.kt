@@ -2,9 +2,7 @@ package fr.enedis.grafana.dsl.metrics
 
 import org.json.JSONObject
 import fr.enedis.grafana.dsl.DashboardElement
-import fr.enedis.grafana.dsl.json.Json
-import fr.enedis.grafana.dsl.json.JsonArray
-import fr.enedis.grafana.dsl.json.jsonObject
+import fr.enedis.grafana.dsl.json.*
 import fr.enedis.grafana.dsl.time.Duration
 import fr.enedis.grafana.dsl.time.m
 
@@ -220,12 +218,31 @@ class ElasticQueryMetricsBuilder {
 class ElasticQueryMetricBuilder {
     var id: String? = null
     var type: String = "count"
-    var field: String = ""
+    var field: String? = null
     var hide: Boolean = false
     var settings: ElasticSettings = ElasticSettings()
+    var pipelineVariables: MutableList<ElasticQueryMetricPipelineVariable> = mutableListOf()
 
-    fun createElasticQueryMetric() = ElasticQueryMetric(type = type, field = field, id = id, hide = hide, settings = settings)
+    fun bucket_script(script: String) {
+        type = "bucket_script"
+        settings = ElasticSettings(script = script)
+    }
 
+    fun pipelineVariable(build: ElasticQueryMetricPipelineVariableBuilder.() -> Unit) {
+        val builder = ElasticQueryMetricPipelineVariableBuilder()
+        builder.build()
+        pipelineVariables += builder.createElasticQueryMetricPipelineVariable()
+    }
+
+    fun createElasticQueryMetric() = ElasticQueryMetric(type = type, field = field, id = id, hide = hide, settings = settings, pipelineVariables = pipelineVariables)
+}
+
+@DashboardElement
+class ElasticQueryMetricPipelineVariableBuilder {
+    var name: String = ""
+    var pipelineAgg: String = ""
+
+    fun createElasticQueryMetricPipelineVariable() = ElasticQueryMetricPipelineVariable(name = name, pipelineAgg = pipelineAgg)
 }
 
 @DashboardElement
@@ -255,6 +272,14 @@ abstract class ElasticSettingsBuilder {
         override fun createElasticSettings() = ElasticSettings(min_doc_count, order, orderBy, size, null, null)
     }
 
+    class BucketScriptElasticSettings : ElasticSettingsBuilder() {
+        var script: String? = ""
+
+        override fun createElasticSettings(): ElasticSettings {
+            return ElasticSettings(script = script)
+        }
+    }
+
 }
 
 class ElasticSettings constructor(
@@ -265,6 +290,7 @@ class ElasticSettings constructor(
     private val trimEdges: String? = null,
     private val interval: Duration? = null,
     private val timezone: String? = null,
+    private val script: String? = null,
 
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject {
@@ -276,6 +302,7 @@ class ElasticSettings constructor(
             "trimEdges" to trimEdges
             "interval" to interval
             "timezone" to timezone
+            "script" to script
         }
     }
 }
@@ -300,8 +327,9 @@ class ElasticGroupBy constructor(
 class ElasticQueryMetric constructor(
     override val id: String? = "1",
     private val type: String,
-    private val field: String,
+    private val field: String?,
     private val hide: Boolean = false,
+    private val pipelineVariables: List<ElasticQueryMetricPipelineVariable>,
     private val settings: ElasticSettings = ElasticSettings()
 ) : DashboardMetric {
     override fun toJson(): JSONObject {
@@ -312,8 +340,20 @@ class ElasticQueryMetric constructor(
             "meta" to JSONObject()
             "settings" to settings
             "hide" to hide
+            "pipelineVariables" to pipelineVariables.toJsonArrayIfNotEmpty()
         }
     }
 }
 
+class ElasticQueryMetricPipelineVariable constructor(
+    private val name: String,
+    private val pipelineAgg: String
+) : Json<JSONObject> {
+    override fun toJson(): JSONObject {
+        return jsonObject {
+            "name" to name
+            "pipelineAgg" to pipelineAgg
+        }
+    }
+}
 

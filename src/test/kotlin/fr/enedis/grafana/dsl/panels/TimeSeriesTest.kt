@@ -2,10 +2,14 @@ package fr.enedis.grafana.dsl.panels
 
 import fr.enedis.grafana.dsl.dashboard
 import fr.enedis.grafana.dsl.datasource.Grafana
+import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.jsonFile
 import fr.enedis.grafana.dsl.panels.timeSeries.*
 import fr.enedis.grafana.dsl.shouldEqualToJson
+import fr.enedis.grafana.dsl.time.m
+import org.amshove.kluent.*
 import org.junit.Test
+import org.json.JSONArray as JSONArray
 
 class TimeSeriesTest {
 
@@ -79,5 +83,40 @@ class TimeSeriesTest {
             }
         }
         expectedDashboard.toString() shouldEqualToJson jsonFile("TimeSeries.json")
+    }
+
+    @Test
+    fun `should create a time series without interval`() {
+        val expectedDashboard = dashboard("time series test") {
+            panels {
+                timeSeriesPanel("time series panel") {
+
+                }
+            }
+        }
+
+        val expectedJson = expectedDashboard.toJson()
+        expectedJson.keys().asSequence().shouldContain("panels")
+        expectedJson.has("panels").shouldBe(true)
+        expectedJson.getJSONArray("panels").length().shouldBe(1)
+        expectedJson.getJSONArray("panels").getJSONObject(0).has("interval").shouldBe(false)
+    }
+
+    @Test
+    fun `should create a time series with interval`() {
+        val expectedDashboard = dashboard("time series test") {
+            panels {
+                timeSeriesPanel("time series panel") {
+                    interval = 2.m
+                }
+            }
+        }
+
+        val expectedJson = expectedDashboard.toJson()
+        expectedJson.keys().asSequence().shouldContain("panels")
+        expectedJson.has("panels").shouldBe(true)
+        expectedJson.getJSONArray("panels").length().shouldBe(1)
+        expectedJson.getJSONArray("panels").getJSONObject(0).has("interval").shouldBe(true)
+        expectedJson.getJSONArray("panels").getJSONObject(0).getString("interval").shouldBeEqualTo("2m")
     }
 }

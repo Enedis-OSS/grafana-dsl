@@ -21,47 +21,67 @@ class PanelTransformationsBuilder {
     fun calculateField(build: CalculateFieldBuilder.() -> Unit) {
         val builder = CalculateFieldBuilder()
         builder.build()
-        transformations += PanelTransformation(builder.id, builder.options)
+        transformations += builder.createPanelTransformation()
     }
 
     fun organizeField(build: OrganizeFieldsBuilder.() -> Unit) {
         val builder = OrganizeFieldsBuilder()
         builder.build()
-        transformations += PanelTransformation(builder.id, builder.options)
+        transformations += builder.createPanelTransformation()
     }
 
     fun sortBy(build: SortByBuilder.() -> Unit) {
         val builder = SortByBuilder()
         builder.build()
-        transformations += PanelTransformation(builder.id, builder.options)
+        transformations += builder.createPanelTransformation()
     }
 
     fun filterFieldsByName(build: FilterFieldsByNameBuilder.() -> Unit) {
         val builder = FilterFieldsByNameBuilder()
         builder.build()
-        transformations += PanelTransformation(builder.id, builder.options)
+        transformations += builder.createPanelTransformation()
     }
 
     fun groupBy(build: GroupByBuilder.() -> Unit) {
         val builder = GroupByBuilder()
         builder.build()
-        transformations += PanelTransformation(builder.id, builder.options)
+        transformations += builder.createPanelTransformation()
+    }
+
+    fun reduce(build: PanelTransformationReduceBuilder.() -> Unit) {
+        val builder = PanelTransformationReduceBuilder()
+        builder.build()
+        transformations += builder.createPanelTransformation()
     }
 }
 
 class CalculateFieldBuilder {
     var id = "calculateField"
+    var filter: PanelTransformationFilter? = null
     var options = CalculateFieldOptions()
+
+    fun filter(build: PanelTransformationFilterBuilder.() -> Unit) {
+        val builder = PanelTransformationFilterBuilder()
+        builder.build()
+        filter = builder.createPanelTransformationFilter()
+    }
+
+    fun byRefId(options: String) {
+        filter = PanelTransformationFilter(id="byRefId", options = options)
+    }
 
     fun options(build: CalculateFieldOptions.() -> Unit) {
         val builder = CalculateFieldOptions()
         builder.build()
         options = builder
     }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options, filter=filter)
 }
 
 class OrganizeFieldsBuilder {
     var id = "organize"
+    var filter: PanelTransformationFilter? = null
     var options = OrganizeFieldsOptions()
 
     fun options(build: OrganizeFieldsOptions.() -> Unit) {
@@ -69,6 +89,8 @@ class OrganizeFieldsBuilder {
         builder.build()
         options = builder
     }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options, filter=filter)
 }
 
 class GroupByBuilder {
@@ -83,6 +105,8 @@ class GroupByBuilder {
         val field = GroupByTransformationFields(name = name).apply(build)
         options.fields += field
     }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options)
 }
 
 class FilterFieldsByNameBuilder {
@@ -95,6 +119,8 @@ class FilterFieldsByNameBuilder {
     fun includeField(name: String) {
         options.includeNames += name
     }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options)
 }
 
 class SortByBuilder {
@@ -108,7 +134,48 @@ class SortByBuilder {
     fun sortByField(desc: Boolean = true, field: String) {
         options.sort += SortByField(desc = desc, field = field)
     }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options)
 }
+
+class PanelTransformationReduceBuilder {
+    var id = "reduce"
+    var options = PanelTransformationReduceOptions()
+
+    fun options(build: PanelTransformationReduceOptionsBuilder.() -> Unit) {
+        val builder = PanelTransformationReduceOptionsBuilder()
+        builder.build()
+        options = builder.createPanelTransformationReduceOptions()
+    }
+
+    fun seriesToRows(reducers: List<String>, includeTimeField: Boolean? = null) {
+        options = PanelTransformationReduceOptions(mode="seriesToRows", reducers = reducers.toTypedArray(), includeTimeField = includeTimeField)
+    }
+
+    fun createPanelTransformation() = PanelTransformation(id=id, options=options)
+}
+
+class PanelTransformationReduceOptions(
+    var mode: String? = null,
+    var reducers: Array<String> = emptyArray(),
+    var includeTimeField: Boolean? = null,
+) : TransformationOptionsBuilder() {
+    override fun toJson(): JSONObject = jsonObject{
+        "mode" to mode
+        "reducers" to reducers
+        "includeTimeField" to includeTimeField
+    }
+}
+
+class PanelTransformationReduceOptionsBuilder(
+    var mode: String? = null,
+    var reducers: List<String> = listOf(),
+    var includeTimeField: Boolean? = null,
+) {
+    fun createPanelTransformationReduceOptions(): PanelTransformationReduceOptions =
+        PanelTransformationReduceOptions(mode = mode, reducers = reducers.toTypedArray(), includeTimeField = includeTimeField)
+}
+
 
 abstract class TransformationOptionsBuilder : Json<JSONObject> {}
 class CalculateFieldOptions(

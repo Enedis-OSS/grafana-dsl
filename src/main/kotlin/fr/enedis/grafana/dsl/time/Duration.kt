@@ -9,9 +9,12 @@ package fr.enedis.grafana.dsl.time
  * @author Dmitry Komarov
  * @since 7/21/18
  */
-class Duration(private val number: Int, private val unit: String) : Refresh {
+class Duration(private val number: Int?, private val unit: String) : Refresh {
+    companion object {
+        val auto = Duration(null, "s")
+    }
 
-    override fun asRefreshPeriod() = "$number$unit"
+    override fun asRefreshPeriod() = if (number != null) "$number$unit" else "auto"
 
     override fun toString() = asRefreshPeriod()
 }

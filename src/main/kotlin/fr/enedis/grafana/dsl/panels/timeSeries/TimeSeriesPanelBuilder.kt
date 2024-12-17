@@ -11,6 +11,7 @@ import fr.enedis.grafana.dsl.panels.repeat.Repeat
 import fr.enedis.grafana.dsl.panels.repeat.RepeatBuilder
 import fr.enedis.grafana.dsl.panels.transformation.PanelTransformation
 import fr.enedis.grafana.dsl.panels.transformation.PanelTransformationsBuilder
+import fr.enedis.grafana.dsl.time.Duration
 import fr.enedis.grafana.dsl.variables.Variable
 import org.json.JSONObject
 
@@ -39,6 +40,8 @@ class TimeSeriesPanelBuilder(
     var transformations: List<PanelTransformation> = mutableListOf()
 
     var description: String? = null
+
+    var interval: Duration? = null
 
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
         this.propertiesSetters += propertiesSetter
@@ -98,6 +101,7 @@ class TimeSeriesPanelBuilder(
             options = options,
             fieldConfig = fieldConfig,
             transformations = transformations,
+            interval = interval,
         )
     ) {
         json -> propertiesSetters.forEach { it(json) }
