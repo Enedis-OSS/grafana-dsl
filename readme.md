@@ -1,3 +1,10 @@
+<!--
+  ~ SPDX-FileCopyrightText: 2023-2025 Enedis
+  ~
+  ~ SPDX-License-Identifier: MIT
+  ~
+  -->
+
 # Grafana kotlin dsl
 
 kotlin [dsl](https://www.jetbrains.com/mps/concepts/domain-specific-languages/) to write grafana dashboards as code.

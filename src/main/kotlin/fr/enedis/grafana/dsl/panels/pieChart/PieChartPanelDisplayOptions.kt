@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2023-2025 Enedis
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 package fr.enedis.grafana.dsl.panels.pieChart
 
 
@@ -82,4 +89,3 @@ class GaugePanelReduceOptionsBuilder {
         return PieChartPanelReduceOptions(fields = fields, values = values, calcs = calcs)
     }
 }
-

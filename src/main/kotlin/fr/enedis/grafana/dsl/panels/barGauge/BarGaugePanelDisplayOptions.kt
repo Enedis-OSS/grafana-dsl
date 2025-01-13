@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2023-2025 Enedis
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 package fr.enedis.grafana.dsl.panels.barGauge
 
 import org.json.JSONObject
@@ -75,4 +82,3 @@ class GaugePanelReduceOptionsBuilder {
         return BarGaugePanelReduceOptions(fields = fields, values = values, calcs = calcs)
     }
 }
-

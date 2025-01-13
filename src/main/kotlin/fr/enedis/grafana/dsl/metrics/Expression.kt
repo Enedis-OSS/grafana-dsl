@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2023-2025 Enedis
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 package fr.enedis.grafana.dsl.metrics
 
 import fr.enedis.grafana.dsl.DashboardElement
@@ -67,5 +74,3 @@ internal class ExpressionQueryIdGenerator {
         return nextId.toString()
     }
 }
-
-

@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2021-2022 NBCO YooMoney LLC
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 @file:JvmName("ValueMappingKt")
 
 package fr.enedis.grafana.dsl.panels

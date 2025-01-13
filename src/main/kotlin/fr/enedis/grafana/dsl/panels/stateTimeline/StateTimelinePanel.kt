@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2023-2025 Enedis
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 package fr.enedis.grafana.dsl.panels.stateTimeline
 
 import fr.enedis.grafana.dsl.json.JsonArray

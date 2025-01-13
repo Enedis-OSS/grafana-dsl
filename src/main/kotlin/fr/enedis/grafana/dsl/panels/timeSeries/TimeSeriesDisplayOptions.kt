@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2023-2025 Enedis
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
 package fr.enedis.grafana.dsl.panels.timeSeries
 
 
@@ -96,5 +103,3 @@ enum class SortOrder(val value: String) {
     DESC("desc"),
     NONE("none");
 }
-
-
