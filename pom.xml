@@ -134,4 +134,11 @@
         <url>https://github.com/Enedis-OSS/chutney/grafana-dsl.git</url>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Enedis-OSS/grafana-dsl</url>
+        </repository>
+    </distributionManagement>
 </project>
