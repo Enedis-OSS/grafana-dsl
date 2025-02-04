@@ -16,7 +16,6 @@ We are using semantic versioning. Tags version must be like x.y.z
 ### release flow
 - create a new branch from main called release/x.y.z where x.y.z is the tag version to be created
 - generate the changelog (Under test)
-    - visit https://placide.enedis.fr/api/v4/projects/6822/repository/changelog?version=x.y.z
     - copy/paste the changelog in the `changelog.md` file. Review it if needed
 - release using maven
 ```
