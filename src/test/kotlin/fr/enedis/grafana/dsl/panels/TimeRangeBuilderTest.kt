@@ -10,8 +10,6 @@ package fr.enedis.grafana.dsl.panels
 import fr.enedis.grafana.dsl.dashboard
 import fr.enedis.grafana.dsl.jsonFile
 import fr.enedis.grafana.dsl.shouldEqualToJson
-import fr.enedis.grafana.dsl.time.h
-import fr.enedis.grafana.dsl.time.m
 import org.junit.jupiter.api.Test
 
 class TimeRangeBuilderTest {
@@ -23,8 +21,8 @@ class TimeRangeBuilderTest {
             panels {
                 singleStat("time range test") {
                     timerange {
-                        lastTime = 2.h
-                        timeShift = 5.m
+                        lastTime = "2h"
+                        timeShift = "5m"
                         hideTimeOverrideInfo = true
                     }
                 }

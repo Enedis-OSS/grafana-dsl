@@ -30,6 +30,9 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>17</kotlin.compiler.jvmTarget>
         <kotlin.version>1.9.0</kotlin.version>
+        <kotlin.compiler.jvmTarget>17</kotlin.compiler.jvmTarget>
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+        <kotlin.compiler.apiVersion>1.9</kotlin.compiler.apiVersion>
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <or.json.version>20230618</or.json.version>
         <kluent.version>1.73</kluent.version>

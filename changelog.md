@@ -4,7 +4,10 @@
   ~ SPDX-License-Identifier: MIT
   ~
   -->
-
+## 1.3.8 (2024-02-11)
+### ⚡ Breaking changes: (1 change)
+### 🚀 Features: (1 change)
+- [feat: add filterByValue table transformations, update timeShift](dev/nexus/ccma/tools/grafana-dsl@75761b762f88432f4d264db95a626606dab6dd02)
 ## 1.3.7 (2024-12-16)
 - [[BUGFIX] Fix consistency with default values](dev/nexus/ccma/tools/grafana-dsl@378794e6683286071028699f4f0591a3d95beefb)
 - [[BUGFIX] Fix typo in json filename](dev/nexus/ccma/tools/grafana-dsl@e90bcc6356c8ae025d3da07dbf69d465262405a9)

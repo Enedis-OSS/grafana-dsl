@@ -16,8 +16,8 @@ import fr.enedis.grafana.dsl.time.Duration
  */
 class TimerangeBuilder {
 
-    var lastTime: Duration? = null
-    var timeShift: Duration? = null
+    var lastTime: String? = null
+    var timeShift: String? = null
     var hideTimeOverrideInfo: Boolean = false
 
     fun createTimerange(): TimeRange {

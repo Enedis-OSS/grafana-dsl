@@ -8,6 +8,7 @@
 package fr.enedis.grafana.dsl.panels.transformation
 
 import fr.enedis.grafana.dsl.json.Json
+import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.json.jsonObject
 import org.json.JSONArray
 import org.json.JSONObject
@@ -45,6 +46,12 @@ class PanelTransformationsBuilder {
 
     fun filterFieldsByName(build: FilterFieldsByNameBuilder.() -> Unit) {
         val builder = FilterFieldsByNameBuilder()
+        builder.build()
+        transformations += builder.createPanelTransformation()
+    }
+
+    fun filterFieldsByValue(build: FilterFieldsByValueBuilder.() -> Unit) {
+        val builder = FilterFieldsByValueBuilder()
         builder.build()
         transformations += builder.createPanelTransformation()
     }
@@ -255,6 +262,7 @@ class FilterFieldsByNameOptions(
     }
 }
 
+
 class GroupByOptions(
     var fields: List<GroupByTransformationFields> = emptyList()
 ) : TransformationOptionsBuilder() {
@@ -278,4 +286,57 @@ class GroupByTransformationFields(
         "aggregations" to aggregations
         "operation" to operation
     }
+}
+
+class FilterFieldsByValueBuilder {
+    var id = "filterByValue"
+    var options = FilterFieldsByValueOptions()
+
+    fun options(build: FilterFieldsByValueOptions.() -> Unit) {
+        options.build()
+    }
+
+
+    fun createPanelTransformation() = PanelTransformation(id = id, options = options)
+}
+
+class FilterFieldsByValueOptions(
+    var filters: List<FilterFieldsByValueFilter> = emptyList(),
+    var match: FilterFieldsByValueMatchType = FilterFieldsByValueMatchType.ANY,
+    var type: FilterFieldsByValueFilterType = FilterFieldsByValueFilterType.INCLUDE
+) : TransformationOptionsBuilder() {
+
+    override fun toJson(): JSONObject {
+        return jsonObject {
+            "filters" to JsonArray(filters)
+            "type" to type.name.toLowerCase()
+            "match" to match.name.toLowerCase()
+        }
+    }
+}
+
+class FilterFieldsByValueFilter(
+    var fieldName: String,
+    var id: String,
+    var value: String
+) : Json<JSONObject> {
+
+    override fun toJson(): JSONObject =
+        jsonObject {
+            "config" to jsonObject {
+                "id" to id
+                "options" to jsonObject {
+                    "value" to value
+                }
+            }
+            "fieldName" to fieldName
+        }
+}
+
+enum class FilterFieldsByValueFilterType {
+    INCLUDE, EXCLUDE
+}
+
+enum class FilterFieldsByValueMatchType {
+    ANY, ALL
 }

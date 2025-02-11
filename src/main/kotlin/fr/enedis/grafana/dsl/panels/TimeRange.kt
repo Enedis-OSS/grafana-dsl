@@ -18,8 +18,8 @@ import fr.enedis.grafana.dsl.time.Duration
  * @since 24.09.2019
  */
 class TimeRange(
-    private val lastTime: Duration? = null,
-    private val timeShift: Duration? = null,
+    private val lastTime: String? = null,
+    private val timeShift: String? = null,
     private val hideTimeOverrideInfo: Boolean = false
 ) : Json<JSONObject> {
 

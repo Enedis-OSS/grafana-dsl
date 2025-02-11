@@ -10,6 +10,7 @@ package fr.enedis.grafana.dsl.panels.transformations
 import fr.enedis.grafana.dsl.jsonFile
 import fr.enedis.grafana.dsl.panels.TestContainerBuilder
 import fr.enedis.grafana.dsl.panels.table.tablePanel
+import fr.enedis.grafana.dsl.panels.transformation.FilterFieldsByValueFilter
 import fr.enedis.grafana.dsl.shouldEqualToJson
 import org.amshove.kluent.shouldBe
 import org.junit.jupiter.api.Test
@@ -134,5 +135,33 @@ class PanelTransformationsBuilderTest {
         val panels = testContainer.panels
         panels.size shouldBe 1
         panels[0].toJson().toString() shouldEqualToJson jsonFile("FilterFieldsByNameTransformation.json")
+    }
+
+    @Test
+    fun `should create table panel with filterFieldsByValue transformations`() {
+        // given
+        val testContainer = TestContainerBuilder()
+
+        // when
+        testContainer.tablePanel(title = "Test Panel") {
+            transformations {
+                filterFieldsByValue {
+                    options {
+                        filters = listOf(
+                            FilterFieldsByValueFilter(
+                                fieldName = "@hour_utc",
+                                id = "regex",
+                                value = "^2"
+                            )
+                        )
+                    }
+                }
+            }
+        }
+
+        // then
+        val panels = testContainer.panels
+        panels.size shouldBe 1
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("FilterFieldsByValueTransformation.json")
     }
 }
