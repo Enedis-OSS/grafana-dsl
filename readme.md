@@ -4,4 +4,128 @@
   ~ SPDX-License-Identifier: MIT
   ~
   -->
-TODO
+# Grafana DSL
+
+**Generate Grafana Dashboards as Code with Kotlin DSL**
+
+Project forked from : https://github.com/yoomoney/grafana-dashboard-dsl
+
+![Grafana DSL Logo](link-to-logo)
+
+## Table of Contents
+
+1. [Features](#features)
+   - [Disclaimer](#Disclaimer)
+2. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+3. [Usage](#usage)
+    - [Basic Example](#basic-example)
+    - [Advanced Example](#advanced-example)
+4. [Contributing](#contributing)
+5. [License](#license)
+6. [Contact](#contact)
+7. [Acknowledgements](#acknowledgements)
+
+## Features
+
+- **Kotlin DSL**: Define your Grafana dashboards using the power of Kotlin language instead of templating extensive and repetitive json file.
+- **Modular and Reusable**: Create reusable components and templates for your dashboards.
+- **Integration**: Easily integrate with your CI/CD pipelines for automated dashboard deployment.
+- **Versionning**: Using the Kotlin DSL makes the code more readable and maintainable than json in git history
+- **Alerts**: Alerts are supported in the dsl
+
+### Disclaimer
+
+Currently, we only support xxx grafana version. In the future, we will, may be, support multiple version of grafana.
+ All the grafana dashboard components are not supported yet. If you find something which does not exist, feel free to open a pull request :)
+
+## Getting Started
+
+### Prerequisites
+
+- Kotlin 1.9.x or higher
+- Maven 3.x.x or higher
+- Grafana instance (for importing dashboards)
+
+### Installation
+
+1. **Create your dashboard project with grafana-dsl maven dependency or use this github repository template (TODO)**:
+   ```xml
+    <dependency>
+        <groupId>fr.enedis</groupId>
+        <artifactId>grafana-dsl</artifactId>
+    </dependency>
+
+### Usage
+
+#### Basic Example
+
+Here's a simple example of how to define a Grafana dashboard using the Kotlin DSL:
+
+```kotlin
+import fr.enedis.grafana.dsl.dashboard
+import fr.enedis.grafana.dsl.dashboard.Dashboard
+import fr.enedis.grafana.dsl.time.TimeRange
+import fr.enedis.grafana.dsl.time.h
+import fr.enedis.grafana.dsl.time.m
+import fr.enedis.grafana.dsl.time.now
+
+fun systemMonitoringDashboard(uid: String? = null) =
+val dashboardTitle = "System Monitoring"
+dashboard (dashboardTitle) {
+   this.uid = uid
+   this.tags = listOf("system", "monitoring")
+   this.timeRange = TimeRange(from = now.minus(24.h), to = now)
+   this.refresh = 5.m
+   panels {//TODO one with panel code, the second call to a method to show reusability
+      row(title = "CPU") {
+         cpuLoadPanel(
+            selectedInstanceInfoOption = selectedInstanceInfoOption,
+            dataSource = env.datasource
+         ) cpuUsageTSPanel (selectedInstanceInfoOption =
+            selectedInstanceInfoOption, dataSource = env.datasource, ins = ins, envName = env.name)
+      } row (title = "Memory") {
+         memTSPanel(
+            selectedInstanceInfoOption = selectedInstanceInfoOption,
+            dataSource = env.datasource,
+         ) memPercentTSPanel (selectedInstanceInfoOption =
+            selectedInstanceInfoOption, dataSource = env.datasource, ins = ins, envName = env.name)
+      }
+   }
+}
+
+
+```
+#### Advanced Example
+
+Check our example directory to see example of different dashboard (TODO)
+
+### Contributing
+
+We welcome contributions from the community! To contribute:
+
+- Fork the repository.
+- Create a new branch (git checkout -b feature-branch).
+- Make your changes and commit them (git commit -am 'Add new feature').
+- Push to the branch (git push origin feature-branch).
+- Create a new Pull Request.
+
+Please make sure to update tests as appropriate.
+
+Don't hesitate to simply open issues if needed !
+
+### License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+###  Contact
+
+For any questions or feedback, please open an issue
+
+###  Acknowledgements
+
+    Thanks to the Grafana community for inspiration and support.
+    Special thanks to our contributors for their valuable input.
+    Thanks for the original project : https://github.com/yoomoney/grafana-dashboard-dsl
+
