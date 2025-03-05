@@ -241,4 +241,29 @@ class TablePanelBuilderTest : AbstractPanelTest() {
         println(panels[0].toJson().toString())
         panels[0].toJson().toString() shouldEqualToJson jsonFile("FieldConfigTablePanel.json")
     }
+
+    @Test
+    fun `should create table panel with custom options`() {
+        // given
+        val testContainer = TestContainerBuilder()
+
+        // when
+        testContainer.tablePanel(title = "Test Panel") {
+            datasource = Zabbix
+            options {
+                cellHeight = "sm"
+                showHeader = false
+                footer = mapOf<String, Any>(
+                    "footer" to mapOf(
+                        "countRows" to false, "reducer" to listOf("sum")
+                    )
+                )
+            }
+        }
+
+        // then
+        val panels = testContainer.panels
+        panels.size shouldBe 1
+        panels[0].toJson().toString() shouldEqualToJson jsonFile("TablePanelWithOptions.json")
+    }
 }

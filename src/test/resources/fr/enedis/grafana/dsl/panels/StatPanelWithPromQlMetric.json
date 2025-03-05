@@ -5,6 +5,7 @@
   "hideTimeOverride": false,
   "options": {
     "justifyMode": "center",
+    "wideLayout":true,
     "colorMode": "value",
     "graphMode": "none",
     "reduceOptions": {

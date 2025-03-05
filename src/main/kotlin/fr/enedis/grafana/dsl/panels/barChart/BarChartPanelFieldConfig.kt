@@ -19,6 +19,9 @@ import fr.enedis.grafana.dsl.panels.gauge.Mapping
 import fr.enedis.grafana.dsl.panels.gauge.MappingsBuilder
 import fr.enedis.grafana.dsl.panels.fields.OverrideFieldConfig
 import fr.enedis.grafana.dsl.panels.fields.OverridesFieldConfigBuilder
+import fr.enedis.grafana.dsl.panels.stateTimeline.ColorScheme
+import fr.enedis.grafana.dsl.panels.timeSeries.CustomFieldConfig
+import fr.enedis.grafana.dsl.panels.timeSeries.CustomFieldConfigBuilder
 import org.json.JSONObject
 
 /**
@@ -35,7 +38,11 @@ class BarChartPanelFieldConfig(
     private val mappings: List<Mapping> = emptyList(),
     private val nullValueMode: NullValue = NullValue.NULL,
     private val overrides: List<OverrideFieldConfig> = emptyList(),
-) : Json<JSONObject> {
+    private val custom: CustomFieldConfig = CustomFieldConfig(),
+    private val colorScheme: ColorScheme? = null,
+    private val displayName: String? = null,
+
+    ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "defaults" to jsonObject {
             "unit" to unit
@@ -46,6 +53,10 @@ class BarChartPanelFieldConfig(
             "thresholds" to thresholds
             "mappings" to JsonArray(mappings)
             "nullValueMode" to nullValueMode.value
+            "custom" to custom
+            "color" to colorScheme
+            "displayName" to displayName
+
         }
         "overrides" to JsonArray(overrides)
     }
@@ -60,6 +71,9 @@ class BarChartPanelFieldConfigBuilder(private val nullValueMode: NullValue = Nul
     var thresholds: Thresholds = Thresholds()
     var mappings: List<Mapping> = emptyList()
     var overrides: List<OverrideFieldConfig> = emptyList()
+    var custom: CustomFieldConfig = CustomFieldConfig()
+    var colorScheme: ColorScheme? = null
+    var displayName: String? = null
 
     internal fun createBarChartPanelFieldConfig(): BarChartPanelFieldConfig = BarChartPanelFieldConfig(
         unit,
@@ -71,6 +85,9 @@ class BarChartPanelFieldConfigBuilder(private val nullValueMode: NullValue = Nul
         mappings,
         nullValueMode,
         overrides,
+        custom,
+        colorScheme,
+        displayName
     )
 
     fun thresholds(mode: ThresholdMode = ThresholdMode.ABSOLUTE, build: ThresholdsBuilder.() -> Unit) {
@@ -89,5 +106,11 @@ class BarChartPanelFieldConfigBuilder(private val nullValueMode: NullValue = Nul
         val builder = OverridesFieldConfigBuilder()
         builder.build()
         overrides = builder.overrides
+    }
+
+    fun custom(build: CustomFieldConfigBuilder.() -> Unit) {
+        val builder = CustomFieldConfigBuilder()
+        builder.build()
+        custom = builder.createCustom()
     }
 }

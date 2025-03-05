@@ -50,6 +50,9 @@ class StateTimelineTest {
                                 "2" to "a bit much"
                                 "3" to "now that's just gluttony"
                             }
+                            valueToJsonMapping {
+                                "3" toFiled mapOf("mode" to "fixed", "color" to "red")
+                            }
                         }
                     }
                     options { }

@@ -7,17 +7,25 @@
     "targets": [],
     "gridPos": {
         "x": 0,
-        "h": 8,
+        "h": 12,
         "y": 0,
-        "w": 12
+        "w": 24
     },
     "transform": "timeseries_aggregations",
     "options": {
-        "footer": {},
+        "footer": {
+            "footer": {
+                "countRows": false,
+                "reducer": [
+                    "sum"
+                ]
+            }
+        },
+        "cellHeight": "sm",
         "showHeader": false
     },
     "transformations": [],
-    "datasource": "Graphite",
+    "datasource": "Zabbix",
     "links": [],
     "fontSize": "100%",
     "styles": [],

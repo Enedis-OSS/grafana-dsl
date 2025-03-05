@@ -63,11 +63,13 @@ class OverridesFieldConfigBuilder {
 class OverrideFieldConfigBuilder {
     var matcher: MatcherFieldConfig = MatcherFieldConfig("byName", "")
     var properties = mutableListOf<PropertyFieldConfig>()
+    var systemRef: String? = null
 
 
     fun create() = OverrideFieldConfig(
         matcher = matcher,
-        properties = properties
+        properties = properties,
+        systemRef = systemRef
     )
 
     fun matcher(build: MatcherFieldConfigBuilder.() -> Unit) {
@@ -81,6 +83,11 @@ class OverrideFieldConfigBuilder {
         builder.build()
         properties.add(builder.create())
     }
+
+    fun systemRef(systemRef: String) {
+        this.systemRef = systemRef
+    }
+
 }
 
 

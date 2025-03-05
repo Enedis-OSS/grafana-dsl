@@ -21,6 +21,12 @@ class MappingsBuilder {
         mappings.addAll(builder.valueToTexts)
     }
 
+    fun valueToJsonMapping(build: ValueToJsonMapping.Builder.() -> Unit) {
+        val builder = ValueToJsonMapping.Builder()
+        builder.build()
+        mappings.addAll(builder.valueToJson)
+    }
+
     fun rangeToText(build: RangeToTextMapping.Builder.() -> Unit) {
         val builder = RangeToTextMapping.Builder()
         builder.build()

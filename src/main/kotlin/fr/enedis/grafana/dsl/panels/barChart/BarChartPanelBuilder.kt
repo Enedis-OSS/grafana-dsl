@@ -42,6 +42,9 @@ class BarChartPanelBuilder(private val title: String,
 
     var transformations: List<PanelTransformation> = mutableListOf()
 
+    var position: Position? = null
+
+
     override fun properties(propertiesSetter: (JSONObject) -> Unit) {
         this.propertiesSetter = propertiesSetter
     }
@@ -98,7 +101,8 @@ class BarChartPanelBuilder(private val title: String,
                     BasePanel(
                         id = panelLayoutGenerator.nextId(),
                         title = title,
-                        position = panelLayoutGenerator.nextPosition(bounds.first, bounds.second)
+                        position = position ?: panelLayoutGenerator.nextPosition(bounds.first, bounds.second)
+
                     ),
                     datasource = datasource,
                     metrics = Metrics(metrics)

@@ -93,7 +93,8 @@
               "mode": "fixed"
             },
             "id": "color"
-          }]
+          }],
+          "__systemRef": "ref"
         }
       ]
     },

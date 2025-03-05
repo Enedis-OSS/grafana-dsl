@@ -14,9 +14,11 @@ import org.json.JSONObject
 
 class OverrideFieldConfig(
     private val matcher: MatcherFieldConfig,
-    private val properties: List<PropertyFieldConfig>
+    private val properties: List<PropertyFieldConfig>,
+    private val systemRef: String? = null
 ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
+        "__systemRef" to systemRef
         "matcher" to matcher
         "properties" to JsonArray(properties)
     }

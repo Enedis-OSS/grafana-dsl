@@ -9,14 +9,12 @@ package fr.enedis.grafana.dsl.panels
 
 import fr.enedis.grafana.dsl.dashboard
 import fr.enedis.grafana.dsl.datasource.Grafana
-import fr.enedis.grafana.dsl.json.JsonArray
 import fr.enedis.grafana.dsl.jsonFile
 import fr.enedis.grafana.dsl.panels.timeSeries.*
 import fr.enedis.grafana.dsl.shouldEqualToJson
 import fr.enedis.grafana.dsl.time.m
 import org.amshove.kluent.*
 import org.junit.Test
-import org.json.JSONArray as JSONArray
 
 class TimeSeriesTest {
 
@@ -54,6 +52,7 @@ class TimeSeriesTest {
                                 colorScheme(color = Color.RED)
                             }
                             override {
+                                systemRef("ref")
                                 matcher {
                                     id = "byName"
                                     options = "200"
@@ -65,6 +64,9 @@ class TimeSeriesTest {
                                         "mode" to "fixed"
                                     )
                                 }
+                                position
+                                systemRef("ref")
+
                             }
                         }
                     }

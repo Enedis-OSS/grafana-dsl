@@ -152,7 +152,8 @@ class StatPanelBuilderTest {
                 justifyMode = JustifyMode.CENTER,
                 orientation = Orientation.AUTO,
                 textMode = TextMode.NAME,
-                graphMode = GraphMode.NONE
+                graphMode = GraphMode.NONE,
+                wideLayout = true
             )
         }
 

@@ -25,7 +25,9 @@ class StatPanelDisplayOptions(
     private val justifyMode: JustifyMode = JustifyMode.AUTO,
     private val text: StatPanelText? = null,
     private val reduceOptions: StatPanelReduceOptions = StatPanelReduceOptions(),
-) : Json<JSONObject> {
+    private val wideLayout: Boolean = true,
+
+    ) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "reduceOptions" to reduceOptions
         "orientation" to orientation.value
@@ -34,6 +36,7 @@ class StatPanelDisplayOptions(
         "graphMode" to graphMode.value
         "justifyMode" to justifyMode.value
         "text" to text
+        "wideLayout" to wideLayout
     }
 }
 
@@ -49,6 +52,7 @@ class StatPanelDisplayOptionsBuilder {
     var graphMode: GraphMode = GraphMode.NONE
     var justifyMode: JustifyMode = JustifyMode.AUTO
     var text: StatPanelText? = null
+    var wideLayout: Boolean = true
     private var reduceOptions: StatPanelReduceOptions = StatPanelReduceOptions()
     fun reduceOptions(build: StatPanelReduceOptionsBuilder.() -> Unit) {
         val builder = StatPanelReduceOptionsBuilder()
@@ -69,7 +73,8 @@ class StatPanelDisplayOptionsBuilder {
         orientation = orientation,
         justifyMode = justifyMode,
         text = text,
-        reduceOptions = reduceOptions
+        reduceOptions = reduceOptions,
+        wideLayout = wideLayout
     )
 }
 

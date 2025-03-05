@@ -67,6 +67,7 @@
       "hideTimeOverride": true,
       "options": {
         "justifyMode": "auto",
+        "wideLayout":true,
         "colorMode": "background",
         "graphMode": "none",
         "reduceOptions": {

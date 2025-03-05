@@ -1,21 +1,25 @@
 {
-  "editable": true,
-  "columns": [],
-  "nullPointMode": "null",
-  "title": "Test Panel",
-  "type": "table",
-  "targets": [],
-  "gridPos": {
-    "x": 0,
-    "h": 12,
-    "y": 0,
-    "w": 24
-  },
-  "transform": "timeseries_aggregations",
-  "transformations": [],
-  "datasource": "Graphite",
-  "links": [],
-  "fontSize": "100%",
-  "styles": [],
-  "id": 1
+    "editable": true,
+    "columns": [],
+    "nullPointMode": "null",
+    "title": "Test Panel",
+    "type": "table",
+    "targets": [],
+    "gridPos": {
+        "x": 0,
+        "h": 12,
+        "y": 0,
+        "w": 24
+    },
+    "transform": "timeseries_aggregations",
+    "options": {
+        "footer": {},
+        "showHeader": false
+    },
+    "transformations": [],
+    "datasource": "Graphite",
+    "links": [],
+    "fontSize": "100%",
+    "styles": [],
+    "id": 1
 }

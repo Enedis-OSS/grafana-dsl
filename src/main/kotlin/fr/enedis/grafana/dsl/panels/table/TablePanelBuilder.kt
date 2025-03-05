@@ -57,6 +57,9 @@ class TablePanelBuilder(
 
     var fieldConfig: TablePanelFieldConfig? = null
 
+    var options: TablePanelDisplayOptions? = TablePanelDisplayOptions()
+
+
     private var repeat: Repeat? = null
 
     private val seriesOverrides: MutableList<SeriesOverride> = mutableListOf()
@@ -110,6 +113,12 @@ class TablePanelBuilder(
         transformations = builder.createPanelTransformations()
     }
 
+    fun options(build: TablePanelDisplayOptionsBuilder.() -> Unit) {
+        val builder = TablePanelDisplayOptionsBuilder()
+        builder.build()
+        options = builder.createTablePanelDisplayOptions()
+    }
+
     internal fun createPanel() = AdditionalPropertiesPanel(
         TablePanel(
             MetricPanel(
@@ -128,7 +137,9 @@ class TablePanelBuilder(
             repeat = repeat,
             transform = transform,
             fieldConfig = fieldConfig,
-            transformations = transformations
+            transformations = transformations,
+            options = options
+
         )
     ) { json -> propertiesSetters.forEach { it(json) } }
 }

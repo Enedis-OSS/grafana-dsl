@@ -53,6 +53,41 @@ class ValueToTextMapping(
 }
 
 /**
+ * Mapping: value -> jsonObject
+ * @author TEYEB Wissem
+ * @since 04.03.2025
+ * */
+class ValueToJsonMapping(
+    private val value: String = "",
+    private val fieldValueMapping: Map<String, Any>? = mapOf()
+
+) : Mapping {
+    override val type: String = "value"
+
+    override fun toJson() = jsonObject {
+        "type" to type
+        "options" to jsonObject {
+            value to jsonObject {
+                fieldValueMapping?.entries?.forEach { (key, value) ->
+                    key to value
+                }
+            }
+        }
+    }
+
+    class Builder {
+        var value: String = ""
+        var fieldValueMapping: Map<String, Any> = mapOf()
+        val valueToJson = mutableListOf<ValueToJsonMapping>()
+
+        infix fun String.toFiled(fieldValueMapping: Map<String, Any>) {
+            valueToJson += ValueToJsonMapping(this, fieldValueMapping = fieldValueMapping)
+        }
+    }
+}
+
+
+/**
  * Mapping: from..to -> text
  * @author Aleksey Matveev
  * @since 03.11.2020

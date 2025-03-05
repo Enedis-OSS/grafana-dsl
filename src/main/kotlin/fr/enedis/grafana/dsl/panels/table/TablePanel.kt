@@ -31,7 +31,9 @@ class TablePanel(
     private val columns: List<TableColumn> = emptyList(),
     private val transform: TableTransform,
     private val transformations: List<PanelTransformation> = emptyList(),
-    private val fieldConfig: TablePanelFieldConfig? = null
+    private val fieldConfig: TablePanelFieldConfig? = null,
+    private val options: TablePanelDisplayOptions? = null
+
 ) : Panel {
 
     override fun toJson() = jsonObject(basePanel.toJson()) {
@@ -43,6 +45,8 @@ class TablePanel(
         "transform" to transform.transform
         "fieldConfig" to fieldConfig
         "transformations" to JsonArray(transformations)
+        "options" to options
+
         if (repeat != null) {
             embed(repeat)
         }

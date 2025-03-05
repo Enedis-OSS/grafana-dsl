@@ -70,7 +70,16 @@
                   "text": "now that's just gluttony"
                 }
               }
-            }
+            },
+              {
+                  "type": "value",
+                  "options": {
+                      "3": {
+                          "mode": "fixed",
+                          "color": "red"
+                      }
+                  }
+              }
           ],
           "color": {
             "mode": "thresholds",

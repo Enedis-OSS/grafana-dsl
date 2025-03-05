@@ -63,15 +63,7 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
     var noValue: String? = null
     var overrides: List<OverrideFieldConfig> = emptyList()
     internal fun createStatPanelFieldConfig(): StatPanelFieldConfig = StatPanelFieldConfig(
-        displayName,
-        thresholds,
-        mappings,
-        nullValueMode,
-        unit,
-        colorScheme,
-        decimals,
-        noValue,
-        overrides
+        displayName, thresholds, mappings, nullValueMode, unit, colorScheme, decimals, noValue, overrides
     )
 
     fun thresholds(mode: ThresholdMode = ThresholdMode.ABSOLUTE, build: ThresholdsBuilder.() -> Unit) {
@@ -93,10 +85,10 @@ class StatPanelFieldConfigBuilder(private val nullValueMode: NullValue = NullVal
     }
 }
 
-class ColorScheme(private val mode: ColorSchemeMode, private val fixedColor: Color) : Json<JSONObject> {
+class ColorScheme(private val mode: ColorSchemeMode, private val fixedColor: Color? = null) : Json<JSONObject> {
     override fun toJson(): JSONObject = jsonObject {
         "mode" to mode.name.lowercase(Locale.getDefault())
-        "fixedColor" to fixedColor.asString()
+        "fixedColor" to (fixedColor?.asString() ?: null)
     }
 }
 

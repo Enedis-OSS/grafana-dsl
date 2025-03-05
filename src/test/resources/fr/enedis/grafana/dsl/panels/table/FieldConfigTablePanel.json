@@ -1,75 +1,79 @@
 {
-  "editable": true,
-  "columns": [],
-  "nullPointMode": "null",
-  "title": "Test Panel",
-  "type": "table",
-  "fieldConfig": {
-    "defaults": {
-      "thresholds": {
-        "mode": "absolute",
-        "steps": [
-          {
-            "color": "#bf1b00",
-            "value": 0
-          }
-        ]
-      },
-      "mappings": [],
-      "links": [],
-      "custom": {
-        "align": "auto",
-        "inspect": false,
-        "cellOptions": {
-          "type": "auto"
-        }
-      }
-    },
-    "unit": "none",
-    "overrides": [
-      {
-        "matcher": {
-          "options": "Size en bytes",
-          "id": "byName"
-        },
-        "properties": [
-          {
-            "value": "bytes",
-            "id": "unit"
-          },
-          {
-            "value": [
-              {
-                "type": "value",
-                "options": {
-                  "toto": {
-                    "text": "tata"
-                  }
+    "editable": true,
+    "columns": [],
+    "nullPointMode": "null",
+    "title": "Test Panel",
+    "type": "table",
+    "fieldConfig": {
+        "defaults": {
+            "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                    {
+                        "color": "#bf1b00",
+                        "value": 0
+                    }
+                ]
+            },
+            "mappings": [],
+            "links": [],
+            "custom": {
+                "align": "auto",
+                "inspect": false,
+                "cellOptions": {
+                    "type": "auto"
                 }
-              }
-            ],
-            "id": "mappings"
-          },
-          {
-            "value": true,
-            "id": "custom.hidden"
-          }
+            }
+        },
+        "unit": "none",
+        "overrides": [
+            {
+                "matcher": {
+                    "options": "Size en bytes",
+                    "id": "byName"
+                },
+                "properties": [
+                    {
+                        "value": "bytes",
+                        "id": "unit"
+                    },
+                    {
+                        "value": [
+                            {
+                                "type": "value",
+                                "options": {
+                                    "toto": {
+                                        "text": "tata"
+                                    }
+                                }
+                            }
+                        ],
+                        "id": "mappings"
+                    },
+                    {
+                        "value": true,
+                        "id": "custom.hidden"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  },
-  "targets": [],
-  "gridPos": {
-    "x": 0,
-    "h": 12,
-    "y": 0,
-    "w": 24
-  },
-  "transform": "timeseries_aggregations",
-  "datasource": "Graphite",
-  "transformations": [],
-  "links": [],
-  "fontSize": "100%",
-  "styles": [],
-  "id": 1
+    },
+    "targets": [],
+    "gridPos": {
+        "x": 0,
+        "h": 12,
+        "y": 0,
+        "w": 24
+    },
+    "transform": "timeseries_aggregations",
+    "datasource": "Graphite",
+    "options": {
+        "footer": {},
+        "showHeader": false
+    },
+    "transformations": [],
+    "links": [],
+    "fontSize": "100%",
+    "styles": [],
+    "id": 1
 }

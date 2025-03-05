@@ -1,36 +1,44 @@
 {
-  "editable" : true,
-  "columns" : [ ],
-  "nullPointMode" : "null",
-  "title" : "Test Panel",
-  "type" : "table",
-  "targets" : [ ],
-  "gridPos" : {
-    "x" : 0,
-    "h" : 12,
-    "y" : 0,
-    "w" : 24
-  },
-  "transform" : "timeseries_aggregations",
-  "datasource" : "Graphite",
-  "transformations" : [ {
-    "options" : {
-      "type" : "include",
-      "match" : "any",
-      "filters" : [ {
-        "config" : {
-          "options" : {
-            "value" : "^2"
-          },
-          "id" : "regex"
-        },
-        "fieldName" : "@hour_utc"
-      } ]
+    "editable": true,
+    "columns": [],
+    "nullPointMode": "null",
+    "title": "Test Panel",
+    "type": "table",
+    "targets": [],
+    "gridPos": {
+        "x": 0,
+        "h": 12,
+        "y": 0,
+        "w": 24
     },
-    "id" : "filterByValue"
-  } ],
-  "links" : [ ],
-  "fontSize" : "100%",
-  "styles" : [ ],
-  "id" : 1
+    "transform": "timeseries_aggregations",
+    "datasource": "Graphite",
+    "options": {
+        "footer": {},
+        "showHeader": false
+    },
+    "transformations": [
+        {
+            "options": {
+                "type": "include",
+                "match": "any",
+                "filters": [
+                    {
+                        "config": {
+                            "options": {
+                                "value": "^2"
+                            },
+                            "id": "regex"
+                        },
+                        "fieldName": "@hour_utc"
+                    }
+                ]
+            },
+            "id": "filterByValue"
+        }
+    ],
+    "links": [],
+    "fontSize": "100%",
+    "styles": [],
+    "id": 1
 }
