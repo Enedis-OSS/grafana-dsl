@@ -4,13 +4,11 @@
   ~ SPDX-License-Identifier: MIT
   ~
   -->
-# Grafana DSL
+<img src="/src/docs/bird.png" height="40"> Grafana DSL
 
 **Generate Grafana Dashboards as Code with Kotlin DSL**
 
 Project forked from : https://github.com/yoomoney/grafana-dashboard-dsl
-
-![Grafana DSL Logo](link-to-logo)
 
 ## Table of Contents
 
