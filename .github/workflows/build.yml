@@ -1,7 +1,7 @@
-#SPDX-FileCopyrightText: 2021-2022 NBCO YooMoney LLC
+#SPDX-FileCopyrightText: 2023-2025 Enedis
 #SPDX-License-Identifier: MIT
 
-name: Build on Pull Request
+name: Build on push and pull Request
 
 on:
   pull_request:
