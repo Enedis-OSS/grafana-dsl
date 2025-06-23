@@ -1,3 +1,6 @@
+#SPDX-FileCopyrightText: 2021-2022 NBCO YooMoney LLC
+#SPDX-License-Identifier: MIT
+
 name: Build on Pull Request
 
 on:

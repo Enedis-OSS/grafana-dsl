@@ -1,3 +1,6 @@
+#SPDX-FileCopyrightText: 2021-2022 NBCO YooMoney LLC
+#SPDX-License-Identifier: MIT
+
 name: Build & Release on Main Push
 
 on:
@@ -15,7 +18,6 @@ permissions:
 jobs:
 
   release:
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -101,8 +103,8 @@ jobs:
       - name: Deploy to Maven Central
         run: mvn deploy -P central -DskipTests=true -B -V
         env:
-          gpg-private-key: ${{secrets.CHUTNEY_GPG_PRIVATE_KEY}}
-          gpg-passphrase: ${{ secrets.CHUTNEY_GPG_PASSPHRASE }}
-          gpg-key-id: ${{ secrets.CHUTNEY_GPG_KEY_ID }}
+          gpg-private-key: ${{secrets.GRAFANA_GPG_PRIVATE_KEY}}
+          gpg-passphrase: ${{ secrets.GRAFANA_GPG_PASSPHRASE }}
+          gpg-key-id: ${{ secrets.GRAFANA_GPG_KEY_ID }}
           maven-username: ${{ secrets.MAVEN_USER_TOKEN }}
           maven-password: ${{ secrets.MAVEN_PASSWORD_TOKEN }}

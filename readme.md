@@ -48,7 +48,7 @@ Currently, we only support grafana **version 10** . In the future, we will, may 
 
 ### Installation
 
-1. **Create your dashboard project with grafana-dsl maven dependency or use this github repository template (TODO)**:
+1. **Create your dashboard project with grafana-dsl maven dependency**:
    ```xml
     <dependency>
         <groupId>fr.enedis</groupId>

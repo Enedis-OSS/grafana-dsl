@@ -1,3 +1,9 @@
+<!--
+  ~ SPDX-FileCopyrightText: 2023-2025 Enedis
+  ~
+  ~ SPDX-License-Identifier: MIT
+  ~
+  -->
 MIT License
 
 Copyright (c) 2021-2022 NBCO YooMoney LLC
