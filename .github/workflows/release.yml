@@ -1,42 +1,23 @@
+#SPDX-FileCopyrightText: 2021-2022 NBCO YooMoney LLC
+#SPDX-License-Identifier: MIT
+
 name: Build & Release on Main Push
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version to push to maven central'
+        required: true
+        default: 'X.Y.Z'
 
 permissions:
   contents: write  # Allows pushing tags and commits
   packages: write  # Allows publishing to GitHub Packages if needed
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Needed for tagging
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Cache Maven dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-${{ runner.os }}
-
-      - name: Build and Test
-        run: mvn clean verify
 
   release:
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -51,6 +32,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: maven-${{ runner.os }}
+
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions"
@@ -60,9 +48,9 @@ jobs:
         id: current_version
         run: echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
-      - name: Increment Version (Remove -SNAPSHOT)
+      - name: Increment Version
         run: |
-          NEW_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
+          NEW_VERSION=${{ github.event.inputs.version }}
           mvn versions:set -DnewVersion=$NEW_VERSION
           mvn versions:commit
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
@@ -78,7 +66,7 @@ jobs:
         with:
           tag_name: v${{ env.NEW_VERSION }}
           name: Release ${{ env.NEW_VERSION }}
-          body: "Automated release of version ${{ env.NEW_VERSION }}"
+          body: "Release ${{ env.NEW_VERSION }}"
           draft: false
           prerelease: false
         env:
@@ -96,3 +84,27 @@ jobs:
         run: |
           git commit -am "Prepare for next development iteration: $SNAPSHOT_VERSION"
           git push origin main
+
+  release-to-central:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          server-id: central
+
+      - name: Deploy to Maven Central
+        run: mvn deploy -P central -DskipTests=true -B -V
+        env:
+          gpg-private-key: ${{secrets.GRAFANA_GPG_PRIVATE_KEY}}
+          gpg-passphrase: ${{ secrets.GRAFANA_GPG_PASSPHRASE }}
+          gpg-key-id: ${{ secrets.GRAFANA_GPG_KEY_ID }}
+          maven-username: ${{ secrets.MAVEN_USER_TOKEN }}
+          maven-password: ${{ secrets.MAVEN_PASSWORD_TOKEN }}
