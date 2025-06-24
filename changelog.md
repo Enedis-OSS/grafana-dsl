@@ -4,33 +4,35 @@
   ~ SPDX-License-Identifier: MIT
   ~
   -->
+
+## 1.4.1 (2025-06-24)
+- chore: Github configuration to release to maven central
+- feat: Refactoring and add some panel attributes
+- feat: Add filterByValue table transformations
 ## 1.3.8 (2024-02-11)
-### ⚡ Breaking changes: (1 change)
-### 🚀 Features: (1 change)
-- [feat: add filterByValue table transformations, update timeShift](dev/nexus/ccma/tools/grafana-dsl@75761b762f88432f4d264db95a626606dab6dd02)
+- feat: Add filterByValue table transformations, update timeShift
 ## 1.3.7 (2024-12-16)
-- [[BUGFIX] Fix consistency with default values](dev/nexus/ccma/tools/grafana-dsl@378794e6683286071028699f4f0591a3d95beefb)
-- [[BUGFIX] Fix typo in json filename](dev/nexus/ccma/tools/grafana-dsl@e90bcc6356c8ae025d3da07dbf69d465262405a9)
+- fix: Fix consistency with default values
+- fix: Fix typo in json filename
 ## 1.3.6 (2024-12-13)
-- [[TECH] Add support for PanelTransformationReduce](dev/nexus/ccma/tools/grafana-dsl@b6230b4fa5aa4d30e1bfe28f88322dbe9e31c82b)
-- [[TECH] Add support for PanelTransformationFilter](dev/nexus/ccma/tools/grafana-dsl@84a0d1e231775e154794f6a30e0f5077acc40677)
-- [[TECH] Support "auto" for class Duration](dev/nexus/ccma/tools/grafana-dsl@c55939246d0e1864f3bedbc0322c2ae9d8544fd2)
-- [[TECH] Add "interval" property to TimeSeriesPanel](dev/nexus/ccma/tools/grafana-dsl@66f365490e40124ef925b77c808bf981a3ef191a)
-- [[TECH] Allow bucket_script in metrics (ElasticQueryMetric)](dev/nexus/ccma/tools/grafana-dsl@2b928ff56a3ae926049767340059e62bf0ccc751)
-- [Add plus operator to nowD](dev/nexus/ccma/tools/grafana-dsl@74c9b09e06046d011e9313d31ed613722b54f815)
+- feat: Add support for PanelTransformationReduce
+- feat: Add support for PanelTransformationFilter
+- feat: Support "auto" for class Duration
+- feat: Add "interval" property to TimeSeriesPanel
+- feat: Allow bucket_script in metrics (ElasticQueryMetric)
+- feat: Add plus operator to nowD
 ## 1.3.5 (2024-10-14)
-- [fix/ add unit for table panel](dev/nexus/ccma/tools/grafana-dsl@6a932ba517c39332d0ba1ec4ddd7b187788ea83f)
+- feat: Add unit for table panel
 ## 1.3.4 (2024-10-02)
-- [feat: identify datasource by uid](dev/nexus/ccma/tools/grafana-dsl@29b8e7adace8e60da33b27557262b39239012b23)
+- feat: Identify datasource by uid
 ## 1.3.3 (2024-09-23)
-- [[ISECU-774] ajout du panel state timeline au dsl](dev/nexus/ccma/tools/grafana-dsl@d9b3a1385955d881f39adaa5ffe4a4a06188c764)
+- feat: Ajout du panel state timeline au dsl
 ### 1.3.2 (2024-09-17)
-- [[ISECU-798]: map within_range condition for alerting query and add custom mappings for timeSeries](dev/nexus/ccma/tools/grafana-dsl@07280376e102b58926d4094942fbc14f8d4d35e4)
+- feat: Map within_range condition for alerting query and add custom mappings for timeSeries
 ### 1.3.1 (2024-08-01)
-- [chore: use long for alert threshold](dev/nexus/ccma/tools/grafana-dsl@bf04df1a7a458b27a82b4b635e35b4913b15cc77)
+- feat: Use long for alert threshold
 ### 1.3.0 (2024-06-24)
-- [feat: add override value mapping for table panel](dev/nexus/ccma/tools/grafana-dsl@89fdd6859ceaacdb96ea34d731fc940a4708217d)
+- feat: Add override value mapping for table panel
 ### 1.2.0 (2024-05-30)
-- [feat: Field config for table + Change schema version](dev/nexus/ccma/tools/grafana-dsl@1219738331712710c10ff7616ee4fbbd1361a79a)
-### 1.1.1 (2024-05-17)
-- [chore: Gitlab CI/CD configuration ](dev/nexus/ccma/tools/grafana-dsl@b3dca1f7c4991e5487c08202abfaee5c0901a5b3)
+- feat: Field config for table + Change schema version
+

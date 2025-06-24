@@ -73,6 +73,10 @@
             <name>Alexandre Delaunay</name>
             <url>https://github.com/delaunayalex</url>
         </developer>
+        <developer>
+            <name>Wissem Teyeb</name>
+            <url>https://gitlab.com/users/WissemTeyeb</url>
+        </developer>
     </developers>
 
     <properties>
