@@ -12,7 +12,7 @@
 
     <groupId>fr.enedis</groupId>
     <artifactId>grafana-dsl</artifactId>
-    <version>1.4.0-SNAPSHOT</version>
+    <version>1.4.1</version>
     <packaging>jar</packaging>
 
     <name>grafana-dsl</name>
