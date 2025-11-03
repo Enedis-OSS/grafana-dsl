@@ -12,7 +12,7 @@
 
     <groupId>fr.enedis</groupId>
     <artifactId>grafana-dsl</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.5.0</version>
     <packaging>jar</packaging>
 
     <name>grafana-dsl</name>
@@ -225,7 +225,7 @@
         <connection>scm:git:git@github.com:Enedis-OSS/grafana-dsl.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:Enedis-OSS/grafana-dsl.git</developerConnection>
         <url>https://github.com/Enedis-OSS/grafana-dsl</url>
-        <tag>HEAD</tag>
+        <tag>1.5.0</tag>
     </scm>
 
     <profiles>

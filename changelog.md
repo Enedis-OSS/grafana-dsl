@@ -4,6 +4,10 @@
   ~ SPDX-License-Identifier: MIT
   ~
   -->
+## 1.5.0 (2025-11-03)
+* feat(): link dashboard to a folder by @KarimGl in https://github.com/Enedis-OSS/grafana-dsl/pull/3
+
+**Full Changelog**: https://github.com/Enedis-OSS/grafana-dsl/compare/1.4.1...1.5.0
 
 ## 1.4.1 (2025-06-24)
 - chore: Github configuration to release to maven central
