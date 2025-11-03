@@ -36,6 +36,7 @@ import org.json.JSONObject
 class Dashboard(
     val uid: String? = null,
     val title: String,
+    val folder: String? = null,
     val timeRange: TimeRange,
     val refresh: Refresh,
     val nowDelay: Duration? = null,

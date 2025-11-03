@@ -16,8 +16,12 @@ annotation class KTag(val value: String)
 
 annotation class KTags(val value:Array<String>)
 
+annotation class KAlertRuleGroup
+
+annotation class KFolder
+
 /**
- * Returns JSON-string for dashboard import.
+ * Returns a Dashboard from build param.
  *
  * @param title Dashboard title
  * @param build Dashboard builder closure

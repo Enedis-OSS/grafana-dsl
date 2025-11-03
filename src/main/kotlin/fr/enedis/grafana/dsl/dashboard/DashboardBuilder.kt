@@ -46,6 +46,8 @@ class DashboardBuilder(private val title: String) {
 
     var uid: String? = null
 
+    var folder: String? = null
+
     var editable: Boolean = true
 
     var graphTooltip: GraphTooltip = GraphTooltip.DEFAULT
@@ -81,6 +83,7 @@ class DashboardBuilder(private val title: String) {
     internal fun createDashboard() = Dashboard(
         uid = uid,
         title = title,
+        folder = folder,
         timeRange = timeRange,
         refresh = refresh,
         nowDelay = nowDelay,

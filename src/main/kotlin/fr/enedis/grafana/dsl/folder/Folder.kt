@@ -8,13 +8,13 @@
 package fr.enedis.grafana.dsl.folder
 
 data class Folder(
-    val id: Long? = null,
     val uid: String? = null,
-    val title: String
+    val title: String? = null,
+    val parentUid: String? = null
 ) {
     init {
-        require(!(id == null && uid.isNullOrBlank())) {
-            "Either 'id' or 'uid' must be provided."
+        require(!(title.isNullOrBlank() && uid.isNullOrBlank())) {
+            "Either 'uid' or 'title' must be provided."
         }
     }
 }

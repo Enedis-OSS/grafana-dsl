@@ -13,9 +13,13 @@ import org.junit.jupiter.api.Test
 class FolderInstantiationTest {
 
     @Test
-    fun `should throw exception if both id or uid are null`() {
+    fun `should throw exception if title and uid are null or blank`() {
         Assertions.assertThrows(IllegalArgumentException::class.java) {
-            Folder(title = "Test Folder")
+            Folder(title = "")
+        }
+
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            Folder(uid = "")
         }
     }
 }
